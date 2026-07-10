@@ -177,18 +177,22 @@
         white-space: nowrap;
       }
 
-      .logo-card {
-        width: min(460px, 100%);
-        margin-bottom: 20px;
-        padding: 18px;
-        border-radius: 24px;
-        border: 1px solid rgba(255,250,242,.16);
-        background: rgba(255,250,242,.06);
+      .footer-logo-band {
+        background:
+          radial-gradient(circle at 82% 18%, rgba(215, 253, 53, 0.16), transparent 30%),
+          radial-gradient(circle at 8% 85%, rgba(182, 117, 85, 0.24), transparent 32%),
+          linear-gradient(135deg, #090a0b 0%, #151719 58%, #252018 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: clamp(28px, 7vw, 60px) clamp(16px, 4vw, 32px) clamp(22px, 5vw, 44px);
       }
 
-      .logo-card img {
+      .footer-logo-band img {
         width: 100%;
-        filter: drop-shadow(0 10px 30px rgba(0,0,0,.28));
+        max-width: none;
+        height: auto;
+        filter: drop-shadow(0 12px 30px rgba(0,0,0,.35));
       }
 
       h1 {
@@ -541,10 +545,6 @@
                 <div class="badge">Grow Support</div>
               </div>
 
-              <div class="logo-card">
-                <img src="https://raw.githubusercontent.com/livekyn/shroombloom-logo/main/SB-Logo.png" alt="ShroomBloom Logo" />
-              </div>
-
               <h1>Welcome to your grow journey</h1>
               <p class="hero-copy">Everything you need to get started, solve issues, and grow with confidence.</p>
 
@@ -648,6 +648,10 @@
           <footer class="footer">
             Questions? Check the video guide or reach out to the community
           </footer>
+
+          <div class="footer-logo-band">
+            <img src="https://raw.githubusercontent.com/livekyn/shroombloom-logo/main/SB-Logo.png" alt="ShroomBloom" />
+          </div>
         </section>
       </div>
 
