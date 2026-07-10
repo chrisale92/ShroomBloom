@@ -1,591 +1,673 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quick Start Guide - ShroomBloom</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quick Start Guide - ShroomBloom</title>
+    <meta name="description" content="ShroomBloom quick start guide: a 7-step walkthrough from injection to harvest." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900;1000&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    
+    <style>
 
-    html, body {
-      width: 100%;
-      height: 100%;
-    }
-
-    body {
-      background: #0a0a0a;
-      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      color: #ffffff;
-      line-height: 1.6;
-    }
-
-    .container {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      padding: 2rem 1.5rem;
-      background: linear-gradient(135deg, #0a0a0a 0%, #1a0a1a 100%);
-    }
-
-    .header {
-      text-align: center;
-      margin-bottom: 2rem;
-      margin-top: 1rem;
-    }
-
-    .header h1 {
-      font-size: 2rem;
-      margin-bottom: 0.5rem;
-      background: linear-gradient(90deg, #E91E8C, #AAFF00);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .header p {
-      color: #999999;
-      font-size: 1rem;
-    }
-
-    .back-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      color: #AAFF00;
-      text-decoration: none;
-      margin-bottom: 2rem;
-      font-size: 0.95rem;
-      transition: all 0.3s ease;
-    }
-
-    .back-link:hover {
-      color: #E91E8C;
-      gap: 0.75rem;
-    }
-
-    .content {
-      max-width: 800px;
-      margin: 0 auto;
-      width: 100%;
-    }
-
-    .timeline {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-      margin-bottom: 3rem;
-    }
-
-    .step {
-      padding: 1.5rem;
-      background: rgba(255, 255, 255, 0.03);
-      border: 2.5px solid #E91E8C;
-      border-radius: 12px;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      animation: slideUp 0.6s ease both;
-    }
-
-    @keyframes slideUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .step:nth-child(odd) {
-      border-color: #E91E8C;
-    }
-
-    .step:nth-child(even) {
-      border-color: #AAFF00;
-    }
-
-    .step:hover {
-      background: rgba(255, 255, 255, 0.08);
-      box-shadow: 0 0 20px rgba(170, 255, 0, 0.4);
-      transform: translateY(-4px);
-    }
-
-    .step:nth-child(odd):hover {
-      border-color: #AAFF00;
-    }
-
-    .step:nth-child(even):hover {
-      border-color: #E91E8C;
-    }
-
-    .step-header {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 1rem;
-    }
-
-    .step-number {
-      width: 44px;
-      height: 44px;
-      min-width: 44px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 600;
-      font-size: 20px;
-      color: white;
-    }
-
-    .step:nth-child(odd) .step-number {
-      background: #E91E8C;
-    }
-
-    .step:nth-child(even) .step-number {
-      background: #AAFF00;
-      color: #0a0a0a;
-    }
-
-    .step-title {
-      font-size: 1.25rem;
-      font-weight: 500;
-    }
-
-    .step-content {
-      margin-left: 60px;
-    }
-
-    .step-content p {
-      margin: 0.5rem 0;
-      color: #cccccc;
-      font-size: 0.95rem;
-      line-height: 1.6;
-    }
-
-    .step-duration {
-      color: #AAFF00;
-      font-weight: 500;
-      font-size: 0.9rem;
-      margin-top: 0.75rem;
-      display: inline-block;
-    }
-
-    .key-point {
-      background: rgba(170, 255, 0, 0.1);
-      border-left: 3px solid #AAFF00;
-      padding: 0.75rem 1rem;
-      border-radius: 6px;
-      margin: 1rem 0;
-      font-size: 0.9rem;
-      color: #e0e0e0;
-    }
-
-    .quick-tips {
-      background: rgba(233, 30, 140, 0.08);
-      border: 2.5px solid #E91E8C;
-      border-radius: 12px;
-      padding: 2rem;
-      margin-bottom: 2rem;
-    }
-
-    .quick-tips h2 {
-      font-size: 1.3rem;
-      margin-bottom: 1.5rem;
-      color: #AAFF00;
-    }
-
-    .tips-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-    }
-
-    .tip {
-      background: rgba(255, 255, 255, 0.03);
-      padding: 1rem;
-      border-radius: 8px;
-      border: 0.5px solid rgba(170, 255, 0, 0.3);
-    }
-
-    .tip-title {
-      font-weight: 500;
-      color: #AAFF00;
-      margin-bottom: 0.5rem;
-      font-size: 0.95rem;
-    }
-
-    .tip-text {
-      font-size: 0.85rem;
-      color: #999999;
-      line-height: 1.5;
-    }
-
-    .material-list {
-      background: rgba(255, 255, 255, 0.03);
-      border: 0.5px solid rgba(170, 255, 0, 0.3);
-      border-radius: 8px;
-      padding: 1.25rem;
-      margin: 1rem 0;
-      font-size: 0.9rem;
-    }
-
-    .material-list h4 {
-      color: #AAFF00;
-      margin-bottom: 0.75rem;
-      font-size: 0.95rem;
-    }
-
-    .material-list ul {
-      list-style: none;
-      padding-left: 0;
-    }
-
-    .material-list li {
-      padding: 0.35rem 0;
-      color: #cccccc;
-    }
-
-    .material-list li:before {
-      content: "✓ ";
-      color: #AAFF00;
-      margin-right: 0.5rem;
-      font-weight: 600;
-    }
-
-    .timeline-summary {
-      background: rgba(170, 255, 0, 0.08);
-      border: 2.5px solid #AAFF00;
-      border-radius: 12px;
-      padding: 2rem;
-      margin-bottom: 2rem;
-    }
-
-    .timeline-summary h2 {
-      font-size: 1.3rem;
-      margin-bottom: 1.5rem;
-      color: #AAFF00;
-    }
-
-    .timeline-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-    }
-
-    .timeline-item {
-      background: rgba(255, 255, 255, 0.03);
-      padding: 1rem;
-      border-radius: 8px;
-      border-left: 3px solid #E91E8C;
-    }
-
-    .timeline-item-week {
-      font-weight: 600;
-      color: #AAFF00;
-      font-size: 0.9rem;
-      margin-bottom: 0.35rem;
-    }
-
-    .timeline-item-text {
-      font-size: 0.85rem;
-      color: #999999;
-    }
-
-    .cta-section {
-      background: rgba(170, 255, 0, 0.08);
-      border: 2.5px solid #AAFF00;
-      border-radius: 12px;
-      padding: 2rem;
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-
-    .cta-section h2 {
-      font-size: 1.3rem;
-      margin-bottom: 1rem;
-      color: #AAFF00;
-    }
-
-    .cta-section p {
-      color: #999999;
-      margin-bottom: 1.5rem;
-      font-size: 0.95rem;
-    }
-
-    .cta-buttons {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .cta-btn {
-      padding: 0.85rem 1.75rem;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 0.95rem;
-      font-weight: 500;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      display: inline-block;
-    }
-
-    .cta-btn.primary {
-      background: #E91E8C;
-      color: white;
-    }
-
-    .cta-btn.primary:hover {
-      background: #AAFF00;
-      color: #0a0a0a;
-    }
-
-    .cta-btn.secondary {
-      background: transparent;
-      border: 2.5px solid #AAFF00;
-      color: #AAFF00;
-    }
-
-    .cta-btn.secondary:hover {
-      background: #AAFF00;
-      color: #0a0a0a;
-    }
-
-    .footer {
-      margin-top: 2rem;
-      text-align: center;
-      color: #666666;
-      font-size: 0.85rem;
-      padding-top: 2rem;
-      border-top: 1px solid rgba(233, 30, 140, 0.2);
-    }
-
-    @media (max-width: 600px) {
-      .tips-grid,
-      .timeline-grid {
-        grid-template-columns: 1fr;
+      :root {
+        --ink: #101215;
+        --ink-soft: #26282b;
+        --cream: #f4efe7;
+        --cream-2: #ebe1d4;
+        --sand: #d5b99a;
+        --clay: #b67555;
+        --moss: #47543f;
+        --neon: #d7fd35;
+        --neon-hover: #bfef00;
+        --white: #fffaf2;
+        --muted: #70675d;
+        --border: rgba(16, 18, 21, 0.18);
+        --dark-border: rgba(255, 250, 242, 0.16);
+        --radius: 28px;
+        --shadow: 0 30px 80px rgba(16, 18, 21, 0.18);
       }
 
-      .header h1 {
-        font-size: 1.5rem;
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: "Nunito", Arial, sans-serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at 15% 10%, rgba(215, 253, 53, 0.18), transparent 28%),
+          radial-gradient(circle at 88% 18%, rgba(182, 117, 85, 0.16), transparent 25%),
+          linear-gradient(180deg, var(--cream) 0%, var(--cream-2) 100%);
+        line-height: 1.45;
       }
 
-      .cta-buttons {
-        flex-direction: column;
+      a { color: inherit; text-decoration: none; }
+      button { font: inherit; }
+      img { max-width: 100%; display: block; }
+
+      .page {
+        min-height: 100vh;
+        overflow: hidden;
+        position: relative;
+        padding-bottom: 40px;
       }
+
+      .page::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        background-image:
+          linear-gradient(rgba(16,18,21,.045) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(16,18,21,.035) 1px, transparent 1px);
+        background-size: 44px 44px;
+        mask-image: linear-gradient(to bottom, black, transparent 75%);
+      }
+
+      .announcement {
+        position: relative;
+        z-index: 2;
+        background: var(--neon);
+        color: var(--ink);
+        text-align: center;
+        font-size: 12px;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        padding: 10px 16px;
+        border-bottom: 1px solid rgba(16,18,21,.16);
+      }
+
+      .wrap {
+        position: relative;
+        z-index: 2;
+        width: min(780px, calc(100% - 30px));
+        margin: 0 auto;
+        padding: 28px 0 0;
+      }
+
+      .hub-shell {
+        border: 1px solid var(--ink);
+        border-radius: 38px;
+        overflow: hidden;
+        background: var(--cream);
+        box-shadow: var(--shadow);
+      }
+
+      .hero-panel {
+        position: relative;
+        color: var(--cream);
+        background:
+          radial-gradient(circle at 82% 18%, rgba(215, 253, 53, 0.22), transparent 25%),
+          radial-gradient(circle at 8% 85%, rgba(182, 117, 85, 0.32), transparent 28%),
+          linear-gradient(135deg, #090a0b 0%, #151719 58%, #252018 100%);
+        padding: clamp(26px, 5vw, 46px);
+        overflow: hidden;
+      }
+
+      .hero-panel::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+        background-size: 42px 42px;
+        mask-image: linear-gradient(to bottom, black, transparent 86%);
+      }
+
+      .hero-inner { position: relative; z-index: 1; }
+
+      .brand-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 22px;
+      }
+
+      .brand { display: flex; align-items: center; gap: 10px; }
+
+      .brand-logo-img {
+        height: 40px;
+        width: auto;
+        display: block;
+        filter: drop-shadow(0 8px 18px rgba(0,0,0,.28));
+      }
+
+      .back-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        border-radius: 999px;
+        border: 1px solid rgba(255,250,242,.26);
+        background: rgba(255,250,242,.06);
+        color: rgba(255,250,242,.86);
+        padding: 10px 16px;
+        font-size: 12px;
+        font-weight: 900;
+        letter-spacing: .06em;
+        text-transform: uppercase;
+        white-space: nowrap;
+        transition: background .2s ease, color .2s ease, transform .2s ease;
+      }
+
+      .back-pill:hover {
+        background: var(--neon);
+        color: var(--ink);
+        transform: translateX(-3px);
+      }
+
+      h1 {
+        margin: 0;
+        font-family: "Nunito", Arial, sans-serif;
+        font-style: italic;
+        font-weight: 400;
+        font-size: clamp(32px, 7vw, 56px);
+        line-height: .98;
+        letter-spacing: -0.05em;
+        max-width: 620px;
+      }
+
+      .hero-copy {
+        margin: 16px 0 0;
+        color: rgba(255,250,242,.82);
+        font-size: clamp(15px, 2.6vw, 18px);
+        max-width: 580px;
+      }
+
+      .count-badge {
+        display: inline-flex;
+        margin-top: 18px;
+        border-radius: 999px;
+        border: 1px solid rgba(255,250,242,.26);
+        padding: 9px 16px;
+        color: rgba(255,250,242,.78);
+        font-size: 11px;
+        font-weight: 900;
+        letter-spacing: .1em;
+        text-transform: uppercase;
+      }
+
+      .section { padding: clamp(22px, 5vw, 40px); }
+
+      .section-title {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 18px;
+      }
+
+      .section-title h2 {
+        margin: 0;
+        font-size: clamp(24px, 4.5vw, 34px);
+        line-height: 1;
+        letter-spacing: -0.05em;
+        font-style: italic;
+        font-weight: 400;
+        font-family: "Nunito", Arial, sans-serif;
+      }
+
+      .footer-logo-band {
+        background:
+          radial-gradient(circle at 82% 18%, rgba(215, 253, 53, 0.16), transparent 30%),
+          radial-gradient(circle at 8% 85%, rgba(182, 117, 85, 0.24), transparent 32%),
+          linear-gradient(135deg, #090a0b 0%, #151719 58%, #252018 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: clamp(28px, 7vw, 60px) clamp(16px, 4vw, 32px) clamp(22px, 5vw, 44px);
+      }
+
+      .footer-logo-band img {
+        width: 100%;
+        max-width: none;
+        height: auto;
+        filter: drop-shadow(0 12px 30px rgba(0,0,0,.35));
+      }
+
+      .footer {
+        border-top: 1px solid var(--border);
+        padding: 22px clamp(24px, 5vw, 40px) 32px;
+        color: var(--muted);
+        font-size: 14px;
+        text-align: center;
+        font-weight: 700;
+      }
+
+      .footer a {
+        color: var(--clay);
+        font-weight: 900;
+        border-bottom: 2px solid transparent;
+        transition: color .2s ease, border-color .2s ease;
+      }
+
+      .footer a:hover {
+        color: var(--ink);
+        border-color: var(--neon);
+      }
+
+      @media (max-width: 760px) {
+        .wrap { width: min(100% - 22px, 780px); padding-top: 16px; }
+        .hub-shell { border-radius: 30px; }
+        .brand-row { align-items: flex-start; }
+      }
+
+
+      .material-list {
+        border: 1px solid var(--ink);
+        border-radius: 24px;
+        background: var(--cream-2);
+        padding: 20px 22px;
+        margin-bottom: 26px;
+      }
+
+      .material-list h4 {
+        margin: 0 0 10px;
+        font-size: 13px;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: .06em;
+        color: var(--clay);
+      }
+
+      .material-list ul { margin: 0; padding-left: 20px; color: var(--ink-soft); font-weight: 700; }
+      .material-list li { margin-bottom: 6px; }
+
+      .timeline { display: flex; flex-direction: column; gap: 14px; margin-bottom: 28px; }
+
+      .step {
+        border: 1px solid var(--ink);
+        border-radius: 24px;
+        background: var(--white);
+        padding: 22px;
+        box-shadow: 0 10px 26px rgba(16,18,21,.06);
+        transition: transform .2s ease, box-shadow .2s ease;
+      }
+
+      .step:hover { transform: translateY(-2px); box-shadow: 0 16px 34px rgba(16,18,21,.1); }
+
+      .step-header { display: flex; align-items: center; gap: 14px; margin-bottom: 12px; }
+
+      .step-number {
+        width: 40px; height: 40px; min-width: 40px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        font-weight: 900;
+        font-size: 17px;
+      }
+
+      .step:nth-child(odd) .step-number { background: var(--ink); color: var(--neon); }
+      .step:nth-child(even) .step-number { background: var(--neon); color: var(--ink); }
+
+      .step-title { font-size: 18px; font-weight: 900; letter-spacing: -0.03em; }
+
+      .step-content { margin-left: 54px; }
+      .step-content p { margin: 8px 0; color: var(--muted); font-weight: 600; font-size: 14.5px; }
+      .step-content p strong { color: var(--ink); }
+
+      .key-point {
+        background: rgba(215,253,53,.22);
+        border-left: 3px solid var(--neon-hover);
+        padding: 10px 14px;
+        border-radius: 10px;
+        margin: 12px 0;
+        font-size: 13.5px;
+        font-weight: 700;
+        color: var(--ink-soft);
+      }
+
+      .step-duration {
+        color: var(--clay);
+        font-weight: 900;
+        font-size: 12.5px;
+        margin-top: 10px;
+        display: inline-block;
+        text-transform: uppercase;
+        letter-spacing: .03em;
+      }
+
+      .quick-tips {
+        border: 1px solid var(--ink);
+        border-radius: 28px;
+        background: var(--ink);
+        color: var(--cream);
+        padding: clamp(20px, 4vw, 32px);
+        margin-bottom: 24px;
+      }
+
+      .quick-tips h2 {
+        margin: 0 0 18px;
+        font-family: "Nunito", Arial, sans-serif;
+        font-style: italic;
+        font-weight: 400;
+        font-size: clamp(24px, 4.5vw, 30px);
+        letter-spacing: -0.04em;
+        color: var(--neon);
+      }
+
+      .tips-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+      .tip {
+        background: rgba(255,250,242,.06);
+        border: 1px solid rgba(255,250,242,.16);
+        border-radius: 16px;
+        padding: 14px;
+      }
+
+      .tip-title { font-weight: 900; margin-bottom: 6px; font-size: 14px; color: var(--neon); }
+      .tip-text { font-size: 13px; color: rgba(255,250,242,.75); font-weight: 600; line-height: 1.5; }
+
+      .timeline-summary {
+        border: 1px solid var(--ink);
+        border-radius: 28px;
+        background: var(--white);
+        padding: clamp(20px, 4vw, 32px);
+        margin-bottom: 24px;
+      }
+
+      .timeline-summary h2 {
+        margin: 0 0 18px;
+        font-family: "Nunito", Arial, sans-serif;
+        font-style: italic;
+        font-weight: 400;
+        font-size: clamp(24px, 4.5vw, 30px);
+        letter-spacing: -0.04em;
+      }
+
+      .timeline-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+      .timeline-item {
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        background: var(--cream-2);
+        padding: 14px;
+      }
+
+      .timeline-item-week {
+        font-weight: 900;
+        color: var(--clay);
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: .05em;
+        margin-bottom: 6px;
+      }
+
+      .timeline-item-text { font-size: 14px; font-weight: 700; color: var(--ink); }
+
+      .cta-section {
+        text-align: center;
+        border: 1px solid var(--ink);
+        border-radius: 28px;
+        background: var(--neon);
+        padding: clamp(24px, 5vw, 36px);
+      }
+
+      .cta-section h2 {
+        margin: 0 0 10px;
+        font-family: "Nunito", Arial, sans-serif;
+        font-style: italic;
+        font-weight: 400;
+        font-size: clamp(26px, 5vw, 32px);
+        letter-spacing: -0.04em;
+        color: var(--ink);
+      }
+
+      .cta-section p {
+        margin: 0 0 22px;
+        color: var(--ink-soft);
+        font-weight: 700;
+        max-width: 520px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .cta-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
 
       .cta-btn {
-        width: 100%;
+        padding: 14px 22px;
+        border-radius: 999px;
+        font-weight: 900;
+        border: 1px solid var(--ink);
+        text-transform: uppercase;
+        font-size: 12px;
+        letter-spacing: .05em;
+        transition: transform .2s ease, background .2s ease;
       }
 
-      .step-content {
-        margin-left: 0;
+      .cta-btn:hover { transform: translateY(-2px); }
+      .cta-btn.primary { background: var(--ink); color: var(--cream); }
+      .cta-btn.primary:hover { background: var(--ink-soft); }
+      .cta-btn.secondary { background: var(--white); color: var(--ink); }
+      .cta-btn.secondary:hover { background: var(--cream-2); }
+
+      @media (max-width: 700px) {
+        .tips-grid, .timeline-grid { grid-template-columns: 1fr; }
+        .step-content { margin-left: 0; }
+        .cta-buttons { flex-direction: column; }
+        .cta-btn { width: 100%; text-align: center; }
       }
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <a href="index.html" class="back-link">
-      ← Back to Home
-    </a>
 
-    <div class="header">
-      <h1>Quick Start Guide</h1>
-      <p>Get growing in under 6 weeks</p>
-    </div>
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <div class="announcement">ShroomBloom Grow Hub &bull; Get growing in under 6 weeks</div>
 
-    <div class="content">
-      <!-- Materials Section -->
-      <div class="material-list">
-        <h4>What You Need:</h4>
-        <ul>
-          <li>Your ShroomBloom Plus kit (includes bag, box, wipes, gloves, rubber band)</li>
-          <li>Spore syringe or liquid culture (get yours from our partners with code Bloom15)</li>
-          <li>Clean scissors</li>
-          <li>Spray bottle with clean water</li>
-        </ul>
-      </div>
+      <div class="wrap">
+        <section class="hub-shell">
+          <header class="hero-panel">
+            <div class="hero-inner">
+              <div class="brand-row">
+                <a class="brand" href="index.html" aria-label="ShroomBloom Home">
+                  <img class="brand-logo-img" src="nublume-SB-logo.png" alt="Nublume" />
+                </a>
+                <a href="index.html" class="back-pill">&larr; Back to Hub</a>
+              </div>
 
-      <!-- Main Timeline -->
-      <div class="timeline">
-        <!-- Step 1 -->
-        <div class="step">
-          <div class="step-header">
-            <div class="step-number">1</div>
-            <div class="step-title">Clean & Inject</div>
-          </div>
-          <div class="step-content">
-            <p>Turn off fans and close windows — still air is your friend. Put on gloves and wipe them down with the large alcohol wipe. Wipe the entire bag, then the injection port carefully with the small wipe.</p>
-            <p>Shake your syringe, insert the needle straight into the injection port, and inject 2–3 cc toward the bottom front of the bag. Remove the needle and inflate the bag slightly by holding it by the top seal for 1 minute.</p>
-            <div class="key-point">⚡ Tip: The injection port is the most critical spot to clean — this single wipe is what protects you from contamination.</div>
-            <span class="step-duration">Time: Day 1 | Next: Wait 3–14 days</span>
-          </div>
-        </div>
+              <h1>Quick Start Guide</h1>
+              <p class="hero-copy">Your complete 7-step walkthrough — from injection to harvest.</p>
+              
+            </div>
+          </header>
 
-        <!-- Step 2 -->
-        <div class="step">
-          <div class="step-header">
-            <div class="step-number">2</div>
-            <div class="step-title">Colonization Phase</div>
-          </div>
-          <div class="step-content">
-            <p>Place your bag in the box (filter patch out the top). Store it in a dark, warm spot like a closet or shelf — 72–78°F is ideal. Liquid culture shows white growth in 3–7 days. Spore syringes take 7–14 days. Just wait and watch.</p>
-            <p><strong>What you're looking for:</strong> White, fuzzy, thread-like mycelium spreading through the grain. <strong>What to avoid:</strong> Don't open the bag. Don't shake it. Just leave it alone.</p>
-            <div class="key-point">🌡️ Temperature is key: Keep it between 72–78°F. A consistent 75°F in a closet beats a sunny windowsill that fluctuates.</div>
-            <span class="step-duration">Time: 3–14 days | Next: Mix & Shake</span>
-          </div>
-        </div>
+          <section class="section">
+            <div class="material-list">
 
-        <!-- Step 3 -->
-        <div class="step">
-          <div class="step-header">
-            <div class="step-number">3</div>
-            <div class="step-title">Break & Shake</div>
-          </div>
-          <div class="step-content">
-            <p>Once about 20–30% of the grain shows white mycelium, it's time to mix. With the bag still sealed, use your hands to gently break apart the colonized grain and mix it with the rest — like kneading dough.</p>
-            <p>Flatten it into an even layer. Wrap the rubber band snugly around the bottom to prevent side pinning. Re-inflate the bag, put it back in the box, and wait again.</p>
-            <div class="key-point">✓ Why mix? Mixing spreads colonized grain throughout, giving your mycelium dozens of new starting points and cutting colonization time in half.</div>
-            <span class="step-duration">Time: Day after mixing | Next: Wait 1–2 weeks</span>
-          </div>
-        </div>
+<h4>What You Need:</h4>
+<ul>
+<li>Your ShroomBloom Plus kit (includes bag, box, wipes, gloves, rubber band)</li>
+<li>Spore syringe or liquid culture (get yours from our partners with code Bloom15)</li>
+<li>Clean scissors</li>
+<li>Spray bottle with clean water</li>
+</ul>
+            </div>
 
-        <!-- Step 4 -->
-        <div class="step">
-          <div class="step-header">
-            <div class="step-number">4</div>
-            <div class="step-title">Full Colonization</div>
-          </div>
-          <div class="step-content">
-            <p>Your job is patience. Keep the bag in the dark box at 75°F. Check weekly for white growth spreading through the substrate. You're done when the entire block looks mostly white all the way through.</p>
-            <p>No misting yet. No opening. The bag is sealed and self-regulating through the 0.2-micron filter patch.</p>
-            <div class="key-point">⏱️ Timing: Total from injection to full colonization is usually 2–4 weeks. Liquid culture moves faster than spore syringes.</div>
-            <span class="step-duration">Time: 1–3 weeks | Next: Hoodie Cut</span>
-          </div>
-        </div>
+            <div class="timeline">
 
-        <!-- Step 5 -->
-        <div class="step">
-          <div class="step-header">
-            <div class="step-number">5</div>
-            <div class="step-title">The Hoodie Cut</div>
-          </div>
-          <div class="step-content">
-            <p>Block fully white? Time to trigger fruiting. Using clean scissors, cut a U-shape into the bag just above the substrate block: left side, bottom, and right side. Leave the back attached so it folds down like a hoodie.</p>
-            <p>Fold the flap backward to expose the substrate. Place your box in indirect light or under a desk lamp (12 hours on/off). Fan once a day by lifting the flap and waving it 5–10 times to push out CO2 and bring in fresh oxygen.</p>
-            <div class="key-point">💡 Why the hoodie? The flap creates a humidity tent while CO2 escapes. You get most of the humidity and air management for free — the bag does the work.</div>
-            <span class="step-duration">Time: After cutting | Next: Watch for pins</span>
-          </div>
-        </div>
+<!-- Step 1 -->
+<div class="step">
+<div class="step-header">
+<div class="step-number">1</div>
+<div class="step-title">Clean &amp; Inject</div>
+</div>
+<div class="step-content">
+<p>Turn off fans and close windows — still air is your friend. Put on gloves and wipe them down with the large alcohol wipe. Wipe the entire bag, then the injection port carefully with the small wipe.</p>
+<p>Shake your syringe, insert the needle straight into the injection port, and inject 2–3 cc toward the bottom front of the bag. Remove the needle and inflate the bag slightly by holding it by the top seal for 1 minute.</p>
+<div class="key-point">⚡ Tip: The injection port is the most critical spot to clean — this single wipe is what protects you from contamination.</div>
+<span class="step-duration">Time: Day 1 | Next: Wait 3–14 days</span>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="step">
+<div class="step-header">
+<div class="step-number">2</div>
+<div class="step-title">Colonization Phase</div>
+</div>
+<div class="step-content">
+<p>Place your bag in the box (filter patch out the top). Store it in a dark, warm spot like a closet or shelf — 72–78°F is ideal. Liquid culture shows white growth in 3–7 days. Spore syringes take 7–14 days. Just wait and watch.</p>
+<p><strong>What you're looking for:</strong> White, fuzzy, thread-like mycelium spreading through the grain. <strong>What to avoid:</strong> Don't open the bag. Don't shake it. Just leave it alone.</p>
+<div class="key-point">🌡️ Temperature is key: Keep it between 72–78°F. A consistent 75°F in a closet beats a sunny windowsill that fluctuates.</div>
+<span class="step-duration">Time: 3–14 days | Next: Mix &amp; Shake</span>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="step">
+<div class="step-header">
+<div class="step-number">3</div>
+<div class="step-title">Break &amp; Shake</div>
+</div>
+<div class="step-content">
+<p>Once about 20–30% of the grain shows white mycelium, it's time to mix. With the bag still sealed, use your hands to gently break apart the colonized grain and mix it with the rest — like kneading dough.</p>
+<p>Flatten it into an even layer. Wrap the rubber band snugly around the bottom to prevent side pinning. Re-inflate the bag, put it back in the box, and wait again.</p>
+<div class="key-point">✓ Why mix? Mixing spreads colonized grain throughout, giving your mycelium dozens of new starting points and cutting colonization time in half.</div>
+<span class="step-duration">Time: Day after mixing | Next: Wait 1–2 weeks</span>
+</div>
+</div>
+<!-- Step 4 -->
+<div class="step">
+<div class="step-header">
+<div class="step-number">4</div>
+<div class="step-title">Full Colonization</div>
+</div>
+<div class="step-content">
+<p>Your job is patience. Keep the bag in the dark box at 75°F. Check weekly for white growth spreading through the substrate. You're done when the entire block looks mostly white all the way through.</p>
+<p>No misting yet. No opening. The bag is sealed and self-regulating through the 0.2-micron filter patch.</p>
+<div class="key-point">⏱️ Timing: Total from injection to full colonization is usually 2–4 weeks. Liquid culture moves faster than spore syringes.</div>
+<span class="step-duration">Time: 1–3 weeks | Next: Hoodie Cut</span>
+</div>
+</div>
+<!-- Step 5 -->
+<div class="step">
+<div class="step-header">
+<div class="step-number">5</div>
+<div class="step-title">The Hoodie Cut</div>
+</div>
+<div class="step-content">
+<p>Block fully white? Time to trigger fruiting. Using clean scissors, cut a U-shape into the bag just above the substrate block: left side, bottom, and right side. Leave the back attached so it folds down like a hoodie.</p>
+<p>Fold the flap backward to expose the substrate. Place your box in indirect light or under a desk lamp (12 hours on/off). Fan once a day by lifting the flap and waving it 5–10 times to push out CO2 and bring in fresh oxygen.</p>
+<div class="key-point">💡 Why the hoodie? The flap creates a humidity tent while CO2 escapes. You get most of the humidity and air management for free — the bag does the work.</div>
+<span class="step-duration">Time: After cutting | Next: Watch for pins</span>
+</div>
+</div>
+<!-- Step 6 -->
+<div class="step">
+<div class="step-header">
+<div class="step-number">6</div>
+<div class="step-title">Fruiting &amp; Pins</div>
+</div>
+<div class="step-content">
+<p>Within 5–10 days, small bumps called "pins" will form on the substrate surface. These are baby mushrooms. Keep fanning once daily. If the surface looks dry and cracked, mist lightly with clean water. If you see water droplets on the walls, you're perfect.</p>
+<p>The pins will grow into full mushrooms over the next 7–10 days.</p>
+<div class="key-point">✓ Moisture &amp; air balance: Too much misting and no air = fuzzy surface but no pins. Too dry = cracked surface. Fan consistently and mist as needed.</div>
+<span class="step-duration">Time: 5–10 days for pins | 7–10 days to harvest</span>
+</div>
+</div>
+<!-- Step 7 -->
+<div class="step">
+<div class="step-header">
+<div class="step-number">7</div>
+<div class="step-title">Harvest &amp; Repeat</div>
+</div>
+<div class="step-content">
+<p>Harvest when caps start to flatten and the veil tears away from the stem — don't wait too long. Twist at the base and pull gently. Pick ALL mushrooms at once, even tiny ones, to give the substrate a fresh start.</p>
+<p>Want more? Mist generously, clip the flap partially shut, and mist daily. Most ShroomBloom kits produce 2–4 flushes over several weeks.</p>
+<div class="key-point">🎯 Pick before the veil breaks to maximize future flushes. Early harvest = more flushes.</div>
+<span class="step-duration">Repeat: Mist daily for 1–2 weeks until next pins form</span>
+</div>
+</div>
+            </div>
 
-        <!-- Step 6 -->
-        <div class="step">
-          <div class="step-header">
-            <div class="step-number">6</div>
-            <div class="step-title">Fruiting & Pins</div>
-          </div>
-          <div class="step-content">
-            <p>Within 5–10 days, small bumps called "pins" will form on the substrate surface. These are baby mushrooms. Keep fanning once daily. If the surface looks dry and cracked, mist lightly with clean water. If you see water droplets on the walls, you're perfect.</p>
-            <p>The pins will grow into full mushrooms over the next 7–10 days.</p>
-            <div class="key-point">✓ Moisture & air balance: Too much misting and no air = fuzzy surface but no pins. Too dry = cracked surface. Fan consistently and mist as needed.</div>
-            <span class="step-duration">Time: 5–10 days for pins | 7–10 days to harvest</span>
-          </div>
-        </div>
+            <div class="quick-tips">
+              <h2>Golden Rules</h2>
+              <div class="tips-grid">
 
-        <!-- Step 7 -->
-        <div class="step">
-          <div class="step-header">
-            <div class="step-number">7</div>
-            <div class="step-title">Harvest & Repeat</div>
-          </div>
-          <div class="step-content">
-            <p>Harvest when caps start to flatten and the veil tears away from the stem — don't wait too long. Twist at the base and pull gently. Pick ALL mushrooms at once, even tiny ones, to give the substrate a fresh start.</p>
-            <p>Want more? Mist generously, clip the flap partially shut, and mist daily. Most ShroomBloom kits produce 2–4 flushes over several weeks.</p>
-            <div class="key-point">🎯 Pick before the veil breaks to maximize future flushes. Early harvest = more flushes.</div>
-            <span class="step-duration">Repeat: Mist daily for 1–2 weeks until next pins form</span>
-          </div>
-        </div>
-      </div>
+<h2>Golden Rules</h2>
+<div class="tips-grid">
+<div class="tip">
+<div class="tip-title">🌡️ Temperature</div>
+<div class="tip-text">Keep between 72–78°F. Consistency matters more than perfection.</div>
+</div>
+<div class="tip">
+<div class="tip-title">⏱️ Patience</div>
+<div class="tip-text">Don't rush. Patience beats perfection. Rushing leads to contamination.</div>
+</div>
+<div class="tip">
+<div class="tip-title">✓ Cleanliness</div>
+<div class="tip-text">One thorough wipe of the injection port prevents 90% of contamination issues.</div>
+</div>
+<div class="tip">
+<div class="tip-title">🎯 Follow Steps</div>
+<div class="tip-text">Strong genetics + clean technique = guaranteed success. We replace contaminated kits free.</div>
+</div>
+</div>
+              </div>
+            </div>
 
-      <!-- Quick Tips Section -->
-      <div class="quick-tips">
-        <h2>Golden Rules</h2>
-        <div class="tips-grid">
-          <div class="tip">
-            <div class="tip-title">🌡️ Temperature</div>
-            <div class="tip-text">Keep between 72–78°F. Consistency matters more than perfection.</div>
-          </div>
-          <div class="tip">
-            <div class="tip-title">⏱️ Patience</div>
-            <div class="tip-text">Don't rush. Patience beats perfection. Rushing leads to contamination.</div>
-          </div>
-          <div class="tip">
-            <div class="tip-title">✓ Cleanliness</div>
-            <div class="tip-text">One thorough wipe of the injection port prevents 90% of contamination issues.</div>
-          </div>
-          <div class="tip">
-            <div class="tip-title">🎯 Follow Steps</div>
-            <div class="tip-text">Strong genetics + clean technique = guaranteed success. We replace contaminated kits free.</div>
-          </div>
-        </div>
-      </div>
+            <div class="timeline-summary">
+              <h2>Typical Timeline</h2>
+              <div class="timeline-grid">
 
-      <!-- Timeline Summary -->
-      <div class="timeline-summary">
-        <h2>Typical Timeline</h2>
-        <div class="timeline-grid">
-          <div class="timeline-item">
-            <div class="timeline-item-week">Week 1–2</div>
-            <div class="timeline-item-text">Inject → watch mycelium grow</div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-item-week">Week 2–3</div>
-            <div class="timeline-item-text">Mix & shake at 20–30% colonized</div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-item-week">Week 3–5</div>
-            <div class="timeline-item-text">Full colonization (block is white)</div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-item-week">Week 5–6</div>
-            <div class="timeline-item-text">Hoodie cut + fruiting (pins appear)</div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-item-week">Week 6–7</div>
-            <div class="timeline-item-text">Harvest your first flush</div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-item-week">Weeks 8+</div>
-            <div class="timeline-item-text">Additional flushes (2–3 more possible)</div>
-          </div>
-        </div>
-      </div>
+<h2>Typical Timeline</h2>
+<div class="timeline-grid">
+<div class="timeline-item">
+<div class="timeline-item-week">Week 1–2</div>
+<div class="timeline-item-text">Inject → watch mycelium grow</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-item-week">Week 2–3</div>
+<div class="timeline-item-text">Mix &amp; shake at 20–30% colonized</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-item-week">Week 3–5</div>
+<div class="timeline-item-text">Full colonization (block is white)</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-item-week">Week 5–6</div>
+<div class="timeline-item-text">Hoodie cut + fruiting (pins appear)</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-item-week">Week 6–7</div>
+<div class="timeline-item-text">Harvest your first flush</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-item-week">Weeks 8+</div>
+<div class="timeline-item-text">Additional flushes (2–3 more possible)</div>
+</div>
+</div>
+              </div>
+            </div>
 
-      <!-- CTA Section -->
-      <div class="cta-section">
-        <h2>Need More Details?</h2>
-        <p>This quick start covers the essentials. For deep dives into troubleshooting, contamination recovery, and advanced techniques, check out our full resources.</p>
-        <div class="cta-buttons">
-          <a href="faq.html" class="cta-btn primary">Go to FAQ</a>
-          <a href="https://drive.google.com/file/d/1SRh4r72HB8lh1A9UdnCciocMyeyMTWmk/view?usp=sharing" class="cta-btn secondary" target="_blank">Video Grow Guide</a>
-        </div>
-      </div>
+            <div class="cta-section">
 
-      <div class="footer">
-        Got questions? Join the Discord community or contact support at support@nublumemushroom.com<br>
+<h2>Need More Details?</h2>
+<p>This quick start covers the essentials. For deep dives into troubleshooting, contamination recovery, and advanced techniques, check out our full resources.</p>
+<div class="cta-buttons">
+<a class="cta-btn primary" href="faq.html">Go to FAQ</a>
+<a class="cta-btn secondary" href="https://drive.google.com/file/d/1SRh4r72HB8lh1A9UdnCciocMyeyMTWmk/view?usp=sharing" target="_blank">Video Grow Guide</a>
+</div>
+            </div>
+          </section>
+
+          <footer class="footer">
+            
+        Got questions? Join the Discord community or contact support at support@nublumemushroom.com<br/>
         Contamination? We replace it 100% free. No questions asked.
+      
+          </footer>
+
+          <div class="footer-logo-band">
+            <img src="https://raw.githubusercontent.com/livekyn/shroombloom-logo/main/SB-Logo.png" alt="ShroomBloom" />
+          </div>
+        </section>
       </div>
-    </div>
-  </div>
-</body>
+    </main>
+  </body>
 </html>
