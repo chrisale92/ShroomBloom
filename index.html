@@ -1,630 +1,697 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ShroomBloom - Your Grow Hub</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html, body {
-      width: 100%;
-      height: 100%;
-    }
-
-    body {
-      background: #0a0a0a;
-      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      color: #ffffff;
-      line-height: 1.6;
-    }
-
-    .container {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem 1.5rem;
-      background: linear-gradient(135deg, #0a0a0a 0%, #1a0a1a 100%);
-    }
-
-    .header {
-      text-align: center;
-      margin-bottom: 3rem;
-      max-width: 600px;
-      animation: fadeIn 0.6s ease;
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(-10px);
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ShroomBloom - Your Grow Hub</title>
+    <meta
+      name="description"
+      content="ShroomBloom grow kit resource hub for video guides, replacement support, quick start instructions, FAQs, spore partners, downloads, and community support."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900;1000&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --ink: #101215;
+        --ink-soft: #26282b;
+        --cream: #f4efe7;
+        --cream-2: #ebe1d4;
+        --sand: #d5b99a;
+        --clay: #b67555;
+        --moss: #47543f;
+        --neon: #d7fd35;
+        --neon-hover: #bfef00;
+        --white: #fffaf2;
+        --muted: #70675d;
+        --border: rgba(16, 18, 21, 0.18);
+        --dark-border: rgba(255, 250, 242, 0.16);
+        --radius: 28px;
+        --shadow: 0 30px 80px rgba(16, 18, 21, 0.18);
       }
-      to {
-        opacity: 1;
-        transform: translateY(0);
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: "Nunito", Arial, sans-serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at 15% 10%, rgba(215, 253, 53, 0.18), transparent 28%),
+          radial-gradient(circle at 88% 18%, rgba(182, 117, 85, 0.16), transparent 25%),
+          linear-gradient(180deg, var(--cream) 0%, var(--cream-2) 100%);
+        line-height: 1.45;
       }
-    }
 
-    .logo {
-      margin-bottom: 1.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+      a { color: inherit; text-decoration: none; }
+      button { font: inherit; }
+      img { max-width: 100%; display: block; }
 
-    .logo img {
-      max-width: 100%;
-      height: auto;
-      width: 90%;
-      filter: drop-shadow(0 0 10px rgba(233, 30, 140, 0.1));
-    }
-
-    .tagline {
-      color: #aaaaaa;
-      font-size: 1rem;
-      font-weight: 300;
-      letter-spacing: 0.5px;
-    }
-
-    .options {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
-      width: 100%;
-      max-width: 600px;
-      margin-bottom: 2rem;
-    }
-
-    @media (min-width: 700px) {
-      .options {
-        grid-template-columns: 1fr 1fr;
+      .page {
+        min-height: 100vh;
+        overflow: hidden;
+        position: relative;
+        padding-bottom: 40px;
       }
-    }
 
-    .option-card {
-      position: relative;
-      padding: 2rem 1.5rem;
-      background: rgba(255, 255, 255, 0.03);
-      border: 2.5px solid #E91E8C;
-      border-radius: 12px;
-      cursor: pointer;
-      text-decoration: none;
-      color: inherit;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      animation: slideUp 0.6s ease 0.1s both;
-    }
-
-    @keyframes slideUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
+      .page::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        background-image:
+          linear-gradient(rgba(16,18,21,.045) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(16,18,21,.035) 1px, transparent 1px);
+        background-size: 44px 44px;
+        mask-image: linear-gradient(to bottom, black, transparent 75%);
       }
-      to {
-        opacity: 1;
-        transform: translateY(0);
+
+      .announcement {
+        position: relative;
+        z-index: 2;
+        background: var(--neon);
+        color: var(--ink);
+        text-align: center;
+        font-size: 12px;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        padding: 10px 16px;
+        border-bottom: 1px solid rgba(16,18,21,.16);
       }
-    }
 
-    .option-card:hover {
-      background: rgba(255, 255, 255, 0.08);
-      border-color: #AAFF00;
-      box-shadow: 0 0 20px rgba(170, 255, 0, 0.4);
-      transform: translateY(-4px);
-    }
-
-    .option-card:nth-child(2) {
-      animation-delay: 0.2s;
-    }
-
-    .option-card:nth-child(3) {
-      animation-delay: 0.3s;
-    }
-
-    .option-card:nth-child(4) {
-      animation-delay: 0.4s;
-    }
-
-    .option-card:nth-child(5) {
-      animation-delay: 0.5s;
-    }
-
-    .option-card:nth-child(6) {
-      animation-delay: 0.6s;
-    }
-
-    .option-card:nth-child(7) {
-      animation-delay: 0.7s;
-    }
-
-    .option-card:nth-child(8) {
-      animation-delay: 0.8s;
-    }
-
-    .option-icon {
-      width: 48px;
-      height: 48px;
-      margin-bottom: 1rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.3s ease;
-    }
-
-    .option-card.video .option-icon {
-      background: rgba(233, 30, 140, 0.15);
-      border-radius: 8px;
-    }
-
-    .option-card.video {
-      border-color: #AAFF00;
-      box-shadow: 0 0 15px rgba(170, 255, 0, 0.3);
-    }
-
-    .option-card.video:hover {
-      border-color: #C8FF33;
-      box-shadow: 0 0 20px rgba(170, 255, 0, 0.5);
-    }
-
-    .option-card.community .option-icon {
-      background: rgba(170, 255, 0, 0.15);
-      border-radius: 8px;
-    }
-
-    .option-card.faq .option-icon {
-      background: rgba(233, 30, 140, 0.15);
-      border-radius: 8px;
-    }
-
-    .option-card.contact .option-icon {
-      background: rgba(170, 255, 0, 0.15);
-      border-radius: 8px;
-    }
-
-    .option-card.downloads .option-icon {
-      background: rgba(170, 255, 0, 0.15);
-      border-radius: 8px;
-    }
-
-    .option-card.partners .option-icon {
-      background: rgba(233, 30, 140, 0.15);
-      border-radius: 8px;
-    }
-
-    .option-card.quickstart .option-icon {
-      background: rgba(170, 255, 0, 0.15);
-      border-radius: 8px;
-    }
-
-    .option-card.kitissue {
-      border-color: #00D4FF;
-    }
-
-    .option-card.kitissue:hover {
-      border-color: #AAFF00;
-      box-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
-    }
-
-    .option-card.kitissue .option-icon {
-      background: rgba(0, 212, 255, 0.15);
-      border-radius: 8px;
-    }
-
-    .option-card:hover .option-icon {
-      transform: scale(1.1);
-    }
-
-    .option-title {
-      font-size: 1.1rem;
-      font-weight: 500;
-      margin-bottom: 0.5rem;
-    }
-
-    .option-description {
-      font-size: 0.9rem;
-      color: #999999;
-      line-height: 1.5;
-    }
-
-    .footer {
-      margin-top: 2rem;
-      text-align: center;
-      color: #666666;
-      font-size: 0.85rem;
-    }
-
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.7);
-      align-items: center;
-      justify-content: center;
-      z-index: 1000;
-      animation: fadeIn 0.3s ease;
-    }
-
-    .modal.active {
-      display: flex;
-    }
-
-    .modal-content {
-      background: #1a1a1a;
-      border: 1px solid rgba(233, 30, 140, 0.3);
-      border-radius: 12px;
-      padding: 2rem;
-      max-width: 400px;
-      text-align: center;
-      animation: slideUp 0.3s ease;
-    }
-
-    .modal h2 {
-      font-size: 1.3rem;
-      margin-bottom: 1rem;
-      background: linear-gradient(90deg, #E91E8C, #AAFF00);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .modal p {
-      color: #999999;
-      margin-bottom: 1.5rem;
-      line-height: 1.6;
-    }
-
-    .community-options {
-      display: flex;
-      gap: 1rem;
-      flex-direction: column;
-    }
-
-    .community-btn {
-      padding: 1rem;
-      border: 1px solid rgba(233, 30, 140, 0.3);
-      background: rgba(255, 255, 255, 0.03);
-      color: #ffffff;
-      border-radius: 8px;
-      cursor: pointer;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      font-size: 1rem;
-      font-weight: 500;
-      display: inline-block;
-    }
-
-    .community-btn:hover {
-      background: rgba(170, 255, 0, 0.15);
-      border-color: #AAFF00;
-      color: #AAFF00;
-    }
-
-    .downloads-list {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-      text-align: left;
-      max-height: 400px;
-      overflow-y: auto;
-    }
-
-    .download-item {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1rem;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(170, 255, 0, 0.2);
-      border-radius: 8px;
-      transition: all 0.3s ease;
-    }
-
-    .download-item:hover {
-      background: rgba(170, 255, 0, 0.1);
-      border-color: #AAFF00;
-    }
-
-    .download-name {
-      font-weight: 500;
-      color: #ffffff;
-    }
-
-    .download-link {
-      padding: 0.5rem 1rem;
-      background: #E91E8C;
-      color: #ffffff;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 0.85rem;
-      text-decoration: none;
-      transition: all 0.3s ease;
-    }
-
-    .download-link:hover {
-      background: #AAFF00;
-      color: #0a0a0a;
-    }
-
-    .close-modal {
-      background: transparent;
-      border: none;
-      color: #999999;
-      font-size: 1.5rem;
-      cursor: pointer;
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      transition: color 0.2s ease;
-    }
-
-    .close-modal:hover {
-      color: #E91E8C;
-    }
-
-    .attention-container {
-      position: absolute;
-      top: 50%;
-      left: 0;
-      transform: translate(-100%, -50%);
-      margin-left: -80px;
-      pointer-events: none;
-      z-index: 100;
-      display: flex;
-      flex-direction: row-reverse;
-      align-items: center;
-      gap: 30px;
-    }
-
-    .attention-arrow {
-      width: 0;
-      height: 0;
-      border-top: 25px solid transparent;
-      border-bottom: 25px solid transparent;
-      border-left: 40px solid #ffffff;
-      filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.6));
-      animation: bounce 2s infinite;
-      flex-shrink: 0;
-    }
-
-    @keyframes bounce {
-      0%, 100% {
-        transform: translateY(0);
+      .wrap {
+        position: relative;
+        z-index: 2;
+        width: min(780px, calc(100% - 30px));
+        margin: 0 auto;
+        padding: 28px 0 0;
       }
-      50% {
-        transform: translateY(-15px);
-      }
-    }
 
-    .attention-text {
-      text-align: center;
-      color: #ffffff;
-      font-size: 18px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      line-height: 1.3;
-      text-shadow: 
-        0 0 10px rgba(170, 255, 0, 0.8),
-        0 0 20px rgba(233, 30, 140, 0.6),
-        2px 2px 4px rgba(0, 0, 0, 0.8);
-      animation: glow 2s ease-in-out infinite;
-      white-space: nowrap;
-    }
-
-    @keyframes glow {
-      0%, 100% {
-        text-shadow: 
-          0 0 10px rgba(170, 255, 0, 0.8),
-          0 0 20px rgba(233, 30, 140, 0.6),
-          2px 2px 4px rgba(0, 0, 0, 0.8);
+      .hub-shell {
+        border: 1px solid var(--ink);
+        border-radius: 38px;
+        overflow: hidden;
+        background: var(--cream);
+        box-shadow: var(--shadow);
       }
-      50% {
-        text-shadow: 
-          0 0 15px rgba(170, 255, 0, 1),
-          0 0 30px rgba(233, 30, 140, 0.8),
-          2px 2px 4px rgba(0, 0, 0, 0.8);
-      }
-    }
 
-    @media (max-width: 699px) {
-      .attention-container {
+      .hero-panel {
+        position: relative;
+        color: var(--cream);
+        background:
+          radial-gradient(circle at 82% 18%, rgba(215, 253, 53, 0.22), transparent 25%),
+          radial-gradient(circle at 8% 85%, rgba(182, 117, 85, 0.32), transparent 28%),
+          linear-gradient(135deg, #090a0b 0%, #151719 58%, #252018 100%);
+        padding: clamp(28px, 6vw, 54px);
+        overflow: hidden;
+      }
+
+      .hero-panel::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+        background-size: 42px 42px;
+        mask-image: linear-gradient(to bottom, black, transparent 86%);
+      }
+
+      .hero-inner {
+        position: relative;
+        z-index: 1;
+      }
+
+      .brand-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 28px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 900;
+        font-size: 24px;
+        letter-spacing: -0.05em;
+      }
+
+
+      .brand-logo-img {
+        height: 58px;
+        width: auto;
+        display: block;
+        filter: drop-shadow(0 10px 24px rgba(0,0,0,.28));
+      }
+
+      .brand-mark {
+        width: 32px;
+        height: 32px;
+        border-radius: 50% 50% 45% 45%;
+        background:
+          radial-gradient(circle at 50% 18%, var(--cream) 0 15%, transparent 16%),
+          linear-gradient(140deg, var(--neon), #92a855 62%, var(--moss));
+        box-shadow: inset 0 -8px 16px rgba(16,18,21,.25);
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 999px;
+        border: 1px solid rgba(255,250,242,.26);
+        padding: 9px 14px;
+        color: rgba(255,250,242,.78);
+        font-size: 11px;
+        font-weight: 900;
+        letter-spacing: .1em;
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+
+      .logo-card {
+        width: min(460px, 100%);
+        margin-bottom: 20px;
+        padding: 18px;
+        border-radius: 24px;
+        border: 1px solid rgba(255,250,242,.16);
+        background: rgba(255,250,242,.06);
+      }
+
+      .logo-card img {
+        width: 100%;
+        filter: drop-shadow(0 10px 30px rgba(0,0,0,.28));
+      }
+
+      h1 {
+        margin: 0;
+        font-family: "Nunito", Arial, sans-serif;
+        font-style: italic;
+        font-weight: 400;
+        font-size: clamp(42px, 9vw, 76px);
+        line-height: .98;
+        letter-spacing: -0.06em;
+        max-width: 620px;
+      }
+
+      .hero-copy {
+        margin: 20px 0 0;
+        color: rgba(255,250,242,.82);
+        font-size: clamp(17px, 3.5vw, 22px);
+        max-width: 600px;
+      }
+
+      .alert-banner {
+        margin-top: 28px;
+        border-radius: 24px;
+        border: 1px solid var(--neon);
+        background: rgba(16,18,21,.76);
+        padding: 18px 20px;
+        color: var(--cream);
+        box-shadow: 0 20px 50px rgba(0,0,0,.18);
+      }
+
+      .alert-title {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 6px;
+        color: var(--neon);
+        font-weight: 900;
+        letter-spacing: .04em;
+        text-transform: uppercase;
+      }
+
+      .alert-banner p {
+        margin: 0;
+        color: rgba(255,250,242,.88);
+        font-size: 15px;
+      }
+
+      .section {
+        padding: clamp(24px, 5vw, 40px);
+      }
+
+      .section-title {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 18px;
+      }
+
+      .section-title h2 {
+        margin: 0;
+        font-size: clamp(26px, 5vw, 40px);
+        line-height: 1;
+        letter-spacing: -0.06em;
+      }
+
+      .section-title span {
+        color: var(--muted);
+        font-size: 13px;
+        font-weight: 900;
+        letter-spacing: .1em;
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+
+      .resource-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .resource-grid.primary {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .resource-card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        min-height: 166px;
+        border: 1px solid var(--ink);
+        border-radius: 26px;
+        background: var(--white);
+        color: var(--ink);
+        padding: 20px;
+        cursor: pointer;
+        overflow: hidden;
+        box-shadow: 0 10px 28px rgba(16,18,21,.08);
+        transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+      }
+
+      .resource-card:hover,
+      .resource-card:focus-visible {
+        transform: translateY(-3px);
+        box-shadow: 0 18px 42px rgba(16,18,21,.14);
+        outline: none;
+      }
+
+      .resource-card::before {
+        content: "";
+        position: absolute;
+        inset: auto -30px -48px auto;
+        width: 112px;
+        height: 112px;
+        border-radius: 50%;
+        background: var(--neon);
+        opacity: .55;
+        transition: transform .2s ease;
+      }
+
+      .resource-card:hover::before,
+      .resource-card:focus-visible::before {
+        transform: scale(1.12);
+      }
+
+      .resource-card.dark {
+        background: var(--ink);
+        color: var(--cream);
+      }
+
+      .resource-card.dark .resource-description { color: rgba(255,250,242,.72); }
+      .resource-card.dark .resource-icon { background: var(--neon); color: var(--ink); }
+      .resource-card.dark::before { background: rgba(255,250,242,.12); opacity: 1; }
+
+      .resource-card.neon {
+        background: var(--neon);
+      }
+
+      .resource-card.neon::before { background: rgba(16,18,21,.13); opacity: 1; }
+
+      .resource-icon {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        place-items: center;
+        width: 48px;
+        height: 48px;
+        margin-bottom: 16px;
+        border-radius: 16px;
+        background: var(--ink);
+        color: var(--cream);
+      }
+
+      .resource-icon svg {
+        width: 25px;
+        height: 25px;
+        fill: currentColor;
+      }
+
+      .resource-title {
+        position: relative;
+        z-index: 1;
+        margin: 0 0 6px;
+        font-size: 19px;
+        line-height: 1.06;
+        font-weight: 900;
+        letter-spacing: -0.04em;
+      }
+
+      .resource-description {
+        position: relative;
+        z-index: 1;
+        margin: 0;
+        color: var(--muted);
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      .community-note {
+        margin-top: 14px;
+        border: 1px solid var(--border);
+        border-radius: 24px;
+        background: var(--cream-2);
+        padding: 18px;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 16px;
+        align-items: center;
+      }
+
+      .community-note strong {
+        display: block;
+        font-size: 17px;
+        line-height: 1.15;
+      }
+
+      .community-note span {
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .mini-pill {
+        border-radius: 999px;
+        border: 1px solid var(--ink);
+        background: var(--ink);
+        color: var(--cream);
+        padding: 11px 16px;
+        font-size: 12px;
+        font-weight: 900;
+        letter-spacing: .06em;
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+
+      .footer {
+        border-top: 1px solid var(--border);
+        padding: 22px clamp(24px, 5vw, 40px) 32px;
+        color: var(--muted);
+        font-size: 14px;
+        text-align: center;
+        font-weight: 700;
+      }
+
+      .modal {
         display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 1000;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        background: rgba(16,18,21,.72);
+        backdrop-filter: blur(14px);
       }
-    }
 
-    .alert-banner {
-      background: rgba(0, 0, 0, 0.9);
-      border: 3px solid #AAFF00;
-      border-radius: 12px;
-      padding: 1.5rem;
-      margin-top: 2rem;
-      margin-bottom: 2rem;
-      text-align: center;
-      animation: pulse-border 1.5s ease-in-out infinite;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
+      .modal.active { display: flex; }
 
-    @keyframes pulse-border {
-      0%, 100% {
-        border-color: #AAFF00;
-        box-shadow: 0 0 15px rgba(170, 255, 0, 0.6);
+      .modal-content {
+        position: relative;
+        width: min(460px, 100%);
+        border: 1px solid var(--ink);
+        border-radius: 32px;
+        background: var(--cream);
+        color: var(--ink);
+        padding: 34px;
+        box-shadow: var(--shadow);
+        animation: modalIn .22s ease;
+        overflow: hidden;
       }
-      50% {
-        border-color: #E91E8C;
-        box-shadow: 0 0 25px rgba(170, 255, 0, 0.9);
-      }
-    }
 
-    .alert-banner-text {
-      color: #ffffff;
-      font-size: 1rem;
-      font-weight: 600;
-      line-height: 1.6;
-      letter-spacing: 0.5px;
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <div class="header">
-      <div class="logo">
-        <img src="https://raw.githubusercontent.com/livekyn/shroombloom-logo/main/SB-Logo.png" alt="ShroomBloom Logo" style="max-width: 100%; height: auto; width: 90%;">
+      .modal-content::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        height: 12px;
+        background: var(--neon);
+      }
+
+      @keyframes modalIn {
+        from { opacity: 0; transform: translateY(10px) scale(.98); }
+        to { opacity: 1; transform: translateY(0) scale(1); }
+      }
+
+      .close-modal {
+        position: absolute;
+        top: 18px;
+        right: 18px;
+        width: 42px;
+        height: 42px;
+        border: 1px solid var(--ink);
+        border-radius: 50%;
+        background: var(--cream);
+        color: var(--ink);
+        cursor: pointer;
+        font-size: 24px;
+        line-height: 1;
+        display: grid;
+        place-items: center;
+      }
+
+      .close-modal:hover { background: var(--neon); }
+
+      .modal h2 {
+        margin: 8px 50px 12px 0;
+        font-family: "Nunito", Arial, sans-serif;
+        font-style: italic;
+        font-weight: 400;
+        font-size: 36px;
+        letter-spacing: -0.06em;
+        line-height: 1;
+      }
+
+      .modal p {
+        margin: 0 0 22px;
+        color: var(--muted);
+        font-weight: 600;
+      }
+
+      .community-options {
+        display: grid;
+        gap: 12px;
+      }
+
+      .community-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        border: 1px solid var(--ink);
+        border-radius: 999px;
+        background: var(--ink);
+        color: var(--cream);
+        padding: 16px 20px;
+        font-weight: 900;
+        transition: transform .2s ease, background .2s ease, color .2s ease;
+      }
+
+      .community-btn:hover {
+        transform: translateY(-2px);
+        background: var(--neon);
+        color: var(--ink);
+      }
+
+      @media (max-width: 760px) {
+        .wrap { width: min(100% - 22px, 780px); padding-top: 16px; }
+        .hub-shell { border-radius: 30px; }
+        .brand-row { align-items: flex-start; }
+        .badge { display: none; }
+        .resource-grid,
+        .resource-grid.primary { grid-template-columns: 1fr; }
+        .resource-card { min-height: 134px; }
+        .community-note { grid-template-columns: 1fr; }
+        .mini-pill { justify-self: start; }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <div class="announcement">ShroomBloom Grow Hub • Scan your kit, pick your resource, start growing</div>
+
+      <div class="wrap">
+        <section class="hub-shell" aria-label="ShroomBloom grow hub resources">
+          <header class="hero-panel">
+            <div class="hero-inner">
+              <div class="brand-row">
+                <a class="brand" href="#" aria-label="Nublume">
+                  <img class="brand-logo-img" src="nublume-SB-logo.png" alt="Nublume" />
+                </a>
+                <div class="badge">Grow Support</div>
+              </div>
+
+              <div class="logo-card">
+                <img src="https://raw.githubusercontent.com/livekyn/shroombloom-logo/main/SB-Logo.png" alt="ShroomBloom Logo" />
+              </div>
+
+              <h1>Welcome to your grow journey</h1>
+              <p class="hero-copy">Everything you need to get started, solve issues, and grow with confidence.</p>
+
+              <div class="alert-banner" role="note" aria-label="Amazon policy update">
+                <div class="alert-title">⚠️ UPDATE — NEW AMAZON POLICY</div>
+                <p>We can no longer contact customers for any reason on Amazon's platform. If something's not right, email us directly, and we'll fix it ASAP!</p>
+              </div>
+            </div>
+          </header>
+
+          <section class="section">
+            <div class="section-title">
+              <h2>Start here</h2>
+              <span>Most used</span>
+            </div>
+
+            <div class="resource-grid primary">
+              <a href="https://drive.google.com/file/d/1SRh4r72HB8lh1A9UdnCciocMyeyMTWmk/view?usp=drive_link" class="resource-card dark" target="_blank" rel="noopener">
+                <div class="resource-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                </div>
+                <h3 class="resource-title">Video Grow Guide</h3>
+                <p class="resource-description">Step-by-step walkthrough</p>
+              </a>
+
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLSf3ULp8_8nW9tdxryDbL2Y81PuMhykmLE_qw3rP3BuIBS4tGA/viewform?usp=header" class="resource-card neon" target="_blank" rel="noopener">
+                <div class="resource-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+                </div>
+                <h3 class="resource-title">Kit Issue & Replacement</h3>
+                <p class="resource-description">Report a problem with your kit</p>
+              </a>
+
+              <button class="resource-card" id="communityBtn" type="button">
+                <div class="resource-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"/></svg>
+                </div>
+                <h3 class="resource-title">Growing Community</h3>
+                <p class="resource-description">Connect with other growers</p>
+              </button>
+            </div>
+
+            <div class="community-note">
+              <div>
+                <strong>Join Our Growing Community</strong>
+                <span>For 24/7 Growing Support</span>
+              </div>
+              <button class="mini-pill" type="button" id="communityPill">Join</button>
+            </div>
+          </section>
+
+          <section class="section" style="padding-top: 0;">
+            <div class="section-title">
+              <h2>Resources</h2>
+              <span>Grow tools</span>
+            </div>
+
+            <div class="resource-grid">
+              <a href="quick-start.html" class="resource-card">
+                <div class="resource-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                </div>
+                <h3 class="resource-title">Quick Start</h3>
+                <p class="resource-description">Get growing in 6 weeks</p>
+              </a>
+
+              <a href="https://qr1.be/WP4KB9" class="resource-card" target="_blank" rel="noopener">
+                <div class="resource-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg>
+                </div>
+                <h3 class="resource-title">Contact Us</h3>
+                <p class="resource-description">Get in touch with our team</p>
+              </a>
+
+              <a href="faq.html" class="resource-card">
+                <div class="resource-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M11 18h2v-2h-2v2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5 0-2.21-1.79-4-4-4z"/></svg>
+                </div>
+                <h3 class="resource-title">FAQ's</h3>
+                <p class="resource-description">Find answers to common questions</p>
+              </a>
+
+              <a href="spore-partners.html" class="resource-card">
+                <div class="resource-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                </div>
+                <h3 class="resource-title">Spore Partners</h3>
+                <p class="resource-description">Trusted spore vendors</p>
+              </a>
+
+              <a href="downloads.html" class="resource-card dark" style="grid-column: 1 / -1;">
+                <div class="resource-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+                </div>
+                <h3 class="resource-title">Downloads</h3>
+                <p class="resource-description">Get guides and resources</p>
+              </a>
+            </div>
+          </section>
+
+          <footer class="footer">
+            Questions? Check the video guide or reach out to the community
+          </footer>
+        </section>
       </div>
-      <div class="tagline">Welcome to your grow journey</div>
-    </div>
 
-    <div class="alert-banner">
-      <div class="alert-banner-text">
-        ⚠️ UPDATE — NEW AMAZON POLICY<br>
-        We can no longer contact customers for any reason on Amazon's platform. If something's not right, email us directly, and we'll fix it ASAP!
+      <div class="modal" id="communityModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="communityTitle">
+        <div class="modal-content">
+          <button class="close-modal" type="button" aria-label="Close community modal" onclick="closeModal()">&times;</button>
+          <h2 id="communityTitle">Join The Community</h2>
+          <p>Pick your platform and connect with other ShroomBloom growers</p>
+          <div class="community-options">
+            <a href="https://discord.gg/hxuCG6jF" class="community-btn" target="_blank" rel="noopener">Join Discord</a>
+          </div>
+        </div>
       </div>
-    </div>
+    </main>
 
-    <div class="options">
-      <a href="https://drive.google.com/file/d/1SRh4r72HB8lh1A9UdnCciocMyeyMTWmk/view?usp=drive_link" class="option-card video" target="_blank">
-        <div class="option-icon">
-          <svg viewBox="0 0 24 24" style="width: 28px; height: 28px; fill: #E91E8C;">
-            <path d="M8 5v14l11-7z"/>
-          </svg>
-        </div>
-        <div class="option-title">Video Grow Guide</div>
-        <div class="option-description">Step-by-step walkthrough</div>
-      </a>
+    <script>
+      const communityBtn = document.getElementById('communityBtn');
+      const communityPill = document.getElementById('communityPill');
+      const communityModal = document.getElementById('communityModal');
 
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSf3ULp8_8nW9tdxryDbL2Y81PuMhykmLE_qw3rP3BuIBS4tGA/viewform?usp=header" class="option-card kitissue" target="_blank">
-        <div class="option-icon">
-          <svg viewBox="0 0 24 24" style="width: 28px; height: 28px; fill: #00D4FF;">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
-          </svg>
-        </div>
-        <div class="option-title">Kit Issue & Replacement</div>
-        <div class="option-description">Report a problem with your kit</div>
-      </a>
-
-      <button class="option-card community" id="communityBtn">
-        <div class="attention-container">
-          <div class="attention-arrow"></div>
-          <div class="attention-text">Join Our Growing Community<br>For 24/7 Growing Support</div>
-        </div>
-        <div class="option-icon">
-          <svg viewBox="0 0 24 24" style="width: 28px; height: 28px; fill: #AAFF00;">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"/>
-          </svg>
-        </div>
-        <div class="option-title">Growing Community</div>
-        <div class="option-description">Connect with other growers</div>
-      </button>
-
-      <a href="quick-start.html" class="option-card quickstart">
-        <div class="option-icon">
-          <svg viewBox="0 0 24 24" style="width: 28px; height: 28px; fill: #AAFF00;">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-          </svg>
-        </div>
-        <div class="option-title">Quick Start</div>
-        <div class="option-description">Get growing in 6 weeks</div>
-      </a>
-
-      <a href="https://qr1.be/WP4KB9" class="option-card contact" target="_blank">
-        <div class="option-icon">
-          <svg viewBox="0 0 24 24" style="width: 28px; height: 28px; fill: #AAFF00;">
-            <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/>
-          </svg>
-        </div>
-        <div class="option-title">Contact Us</div>
-        <div class="option-description">Get in touch with our team</div>
-      </a>
-
-      <a href="faq.html" class="option-card faq">
-        <div class="option-icon">
-          <svg viewBox="0 0 24 24" style="width: 28px; height: 28px; fill: #E91E8C;">
-            <path d="M11 18h2v-2h-2v2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5 0-2.21-1.79-4-4-4z"/>
-          </svg>
-        </div>
-        <div class="option-title">FAQ's</div>
-        <div class="option-description">Find answers to common questions</div>
-      </a>
-
-      <a href="spore-partners.html" class="option-card partners">
-        <div class="option-icon">
-          <svg viewBox="0 0 24 24" style="width: 28px; height: 28px; fill: #E91E8C;">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-          </svg>
-        </div>
-        <div class="option-title">Spore Partners</div>
-        <div class="option-description">Trusted spore vendors</div>
-      </a>
-
-      <a href="downloads.html" class="option-card downloads">
-        <div class="option-icon">
-          <svg viewBox="0 0 24 24" style="width: 28px; height: 28px; fill: #AAFF00;">
-            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
-          </svg>
-        </div>
-        <div class="option-title">Downloads</div>
-        <div class="option-description">Get guides and resources</div>
-      </a>
-    </div>
-
-    <div class="footer">
-      Questions? Check the video guide or reach out to the community
-    </div>
-  </div>
-
-  <!-- Community Modal -->
-  <div class="modal" id="communityModal">
-    <div class="modal-content">
-      <button class="close-modal" onclick="closeModal()">&times;</button>
-      <h2>Join The Community</h2>
-      <p>Pick your platform and connect with other ShroomBloom growers</p>
-      <div class="community-options">
-        <a href="https://discord.gg/hxuCG6jF" class="community-btn" target="_blank">
-          🎮 Join Discord
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    const communityBtn = document.getElementById('communityBtn');
-    const communityModal = document.getElementById('communityModal');
-
-    communityBtn.addEventListener('click', () => {
-      communityModal.classList.add('active');
-    });
-
-    function closeModal() {
-      communityModal.classList.remove('active');
-    }
-
-    communityModal.addEventListener('click', (e) => {
-      if (e.target === communityModal) {
-        closeModal();
+      function openModal() {
+        communityModal.classList.add('active');
+        communityModal.setAttribute('aria-hidden', 'false');
       }
-    });
 
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        closeModal();
+      function closeModal() {
+        communityModal.classList.remove('active');
+        communityModal.setAttribute('aria-hidden', 'true');
       }
-    });
-  </script>
-</body>
+
+      communityBtn.addEventListener('click', openModal);
+      communityPill.addEventListener('click', openModal);
+
+      communityModal.addEventListener('click', (event) => {
+        if (event.target === communityModal) {
+          closeModal();
+        }
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+          closeModal();
+        }
+      });
+    </script>
+  </body>
 </html>
