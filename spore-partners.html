@@ -1,215 +1,387 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Spore Partners - ShroomBloom</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spore Partners - ShroomBloom</title>
+    <meta name="description" content="Trusted spore and culture vendors recommended by ShroomBloom, with exclusive discount codes." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900;1000&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    
+    <style>
 
-    html, body {
-      width: 100%;
-      height: 100%;
-    }
-
-    body {
-      background: #0a0a0a;
-      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      color: #ffffff;
-      line-height: 1.6;
-    }
-
-    .container {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      padding: 2rem 1.5rem;
-      background: linear-gradient(135deg, #0a0a0a 0%, #1a0a1a 100%);
-    }
-
-    .header {
-      text-align: center;
-      margin-bottom: 2rem;
-      margin-top: 1rem;
-    }
-
-    .header h1 {
-      font-size: 2rem;
-      margin-bottom: 0.5rem;
-      background: linear-gradient(90deg, #E91E8C, #AAFF00);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .header p {
-      color: #999999;
-      font-size: 1rem;
-    }
-
-    .back-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      color: #AAFF00;
-      text-decoration: none;
-      margin-bottom: 2rem;
-      font-size: 0.95rem;
-      transition: all 0.3s ease;
-    }
-
-    .back-link:hover {
-      color: #E91E8C;
-      gap: 0.75rem;
-    }
-
-    .content {
-      max-width: 700px;
-      margin: 0 auto;
-      width: 100%;
-    }
-
-    .partners-list {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-
-    .partner-card {
-      padding: 1.5rem;
-      background: rgba(255, 255, 255, 0.03);
-      border: 2.5px solid #E91E8C;
-      border-radius: 12px;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      animation: slideUp 0.6s ease both;
-    }
-
-    @keyframes slideUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
+      :root {
+        --ink: #101215;
+        --ink-soft: #26282b;
+        --cream: #f4efe7;
+        --cream-2: #ebe1d4;
+        --sand: #d5b99a;
+        --clay: #b67555;
+        --moss: #47543f;
+        --neon: #d7fd35;
+        --neon-hover: #bfef00;
+        --white: #fffaf2;
+        --muted: #70675d;
+        --border: rgba(16, 18, 21, 0.18);
+        --dark-border: rgba(255, 250, 242, 0.16);
+        --radius: 28px;
+        --shadow: 0 30px 80px rgba(16, 18, 21, 0.18);
       }
-      to {
-        opacity: 1;
-        transform: translateY(0);
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: "Nunito", Arial, sans-serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at 15% 10%, rgba(215, 253, 53, 0.18), transparent 28%),
+          radial-gradient(circle at 88% 18%, rgba(182, 117, 85, 0.16), transparent 25%),
+          linear-gradient(180deg, var(--cream) 0%, var(--cream-2) 100%);
+        line-height: 1.45;
       }
-    }
 
-    .partner-card:hover {
-      background: rgba(255, 255, 255, 0.08);
-      border-color: #AAFF00;
-      box-shadow: 0 0 20px rgba(170, 255, 0, 0.4);
-      transform: translateY(-4px);
-    }
+      a { color: inherit; text-decoration: none; }
+      button { font: inherit; }
+      img { max-width: 100%; display: block; }
 
-    .partner-info {
-      flex: 1;
-    }
+      .page {
+        min-height: 100vh;
+        overflow: hidden;
+        position: relative;
+        padding-bottom: 40px;
+      }
 
-    .partner-name {
-      font-size: 1.1rem;
-      font-weight: 500;
-      margin-bottom: 0.25rem;
-    }
+      .page::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        background-image:
+          linear-gradient(rgba(16,18,21,.045) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(16,18,21,.035) 1px, transparent 1px);
+        background-size: 44px 44px;
+        mask-image: linear-gradient(to bottom, black, transparent 75%);
+      }
 
-    .partner-description {
-      font-size: 0.9rem;
-      color: #999999;
-    }
-
-    .partner-link {
-      padding: 0.75rem 1.5rem;
-      background: #E91E8C;
-      color: #ffffff;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 0.9rem;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      font-weight: 500;
-      white-space: nowrap;
-    }
-
-    .partner-link:hover {
-      background: #AAFF00;
-      color: #0a0a0a;
-    }
-
-    .footer {
-      margin-top: 3rem;
-      text-align: center;
-      color: #666666;
-      font-size: 0.85rem;
-      padding-top: 2rem;
-      border-top: 1px solid rgba(233, 30, 140, 0.2);
-    }
-
-    @media (max-width: 600px) {
-      .partner-card {
-        flex-direction: column;
+      .announcement {
+        position: relative;
+        z-index: 2;
+        background: var(--neon);
+        color: var(--ink);
         text-align: center;
+        font-size: 12px;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        padding: 10px 16px;
+        border-bottom: 1px solid rgba(16,18,21,.16);
       }
 
-      .header h1 {
-        font-size: 1.5rem;
+      .wrap {
+        position: relative;
+        z-index: 2;
+        width: min(780px, calc(100% - 30px));
+        margin: 0 auto;
+        padding: 28px 0 0;
       }
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <a href="index.html" class="back-link">
-      ← Back to Home
-    </a>
 
-    <div class="header">
-      <h1>Spore Partners</h1>
-      <p>Trusted vendors we recommend</p>
-    </div>
+      .hub-shell {
+        border: 1px solid var(--ink);
+        border-radius: 38px;
+        overflow: hidden;
+        background: var(--cream);
+        box-shadow: var(--shadow);
+      }
 
-    <div class="content">
-      <div class="partners-list">
-        <div class="partner-card">
-          <div class="partner-info">
-            <div class="partner-name">Inoculate The World</div>
-            <div class="partner-description">Code: <span style="color: #AAFF00; font-weight: 500;">Nublume20</span></div>
-          </div>
-          <a href="https://inoculatetheworld.com/product-category/isolated-syringes/" class="partner-link" target="_blank">Click Here</a>
-        </div>
+      .hero-panel {
+        position: relative;
+        color: var(--cream);
+        background:
+          radial-gradient(circle at 82% 18%, rgba(215, 253, 53, 0.22), transparent 25%),
+          radial-gradient(circle at 8% 85%, rgba(182, 117, 85, 0.32), transparent 28%),
+          linear-gradient(135deg, #090a0b 0%, #151719 58%, #252018 100%);
+        padding: clamp(26px, 5vw, 46px);
+        overflow: hidden;
+      }
 
-        <div class="partner-card">
-          <div class="partner-info">
-            <div class="partner-name">SporesMD</div>
-            <div class="partner-description">Code: <span style="color: #AAFF00; font-weight: 500;">Nublume20</span></div>
-          </div>
-          <a href="https://sporesmd.com/shop/microscopy-liquid-cultures/" class="partner-link" target="_blank">Click Here</a>
-        </div>
+      .hero-panel::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+        background-size: 42px 42px;
+        mask-image: linear-gradient(to bottom, black, transparent 86%);
+      }
 
-        <div class="partner-card">
-          <div class="partner-info">
-            <div class="partner-name">Thick Spores</div>
-            <div class="partner-description">Code: <span style="color: #AAFF00; font-weight: 500;">Bloom15</span></div>
-          </div>
-          <a href="https://thickspores.com/" class="partner-link" target="_blank">Click Here</a>
-        </div>
-      </div>
-    </div>
+      .hero-inner { position: relative; z-index: 1; }
 
-    <div class="footer">
+      .brand-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 22px;
+      }
+
+      .brand { display: flex; align-items: center; gap: 10px; }
+
+      .brand-logo-img {
+        height: 40px;
+        width: auto;
+        display: block;
+        filter: drop-shadow(0 8px 18px rgba(0,0,0,.28));
+      }
+
+      .back-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        border-radius: 999px;
+        border: 1px solid rgba(255,250,242,.26);
+        background: rgba(255,250,242,.06);
+        color: rgba(255,250,242,.86);
+        padding: 10px 16px;
+        font-size: 12px;
+        font-weight: 900;
+        letter-spacing: .06em;
+        text-transform: uppercase;
+        white-space: nowrap;
+        transition: background .2s ease, color .2s ease, transform .2s ease;
+      }
+
+      .back-pill:hover {
+        background: var(--neon);
+        color: var(--ink);
+        transform: translateX(-3px);
+      }
+
+      h1 {
+        margin: 0;
+        font-family: "Nunito", Arial, sans-serif;
+        font-style: italic;
+        font-weight: 400;
+        font-size: clamp(32px, 7vw, 56px);
+        line-height: .98;
+        letter-spacing: -0.05em;
+        max-width: 620px;
+      }
+
+      .hero-copy {
+        margin: 16px 0 0;
+        color: rgba(255,250,242,.82);
+        font-size: clamp(15px, 2.6vw, 18px);
+        max-width: 580px;
+      }
+
+      .count-badge {
+        display: inline-flex;
+        margin-top: 18px;
+        border-radius: 999px;
+        border: 1px solid rgba(255,250,242,.26);
+        padding: 9px 16px;
+        color: rgba(255,250,242,.78);
+        font-size: 11px;
+        font-weight: 900;
+        letter-spacing: .1em;
+        text-transform: uppercase;
+      }
+
+      .section { padding: clamp(22px, 5vw, 40px); }
+
+      .section-title {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 18px;
+      }
+
+      .section-title h2 {
+        margin: 0;
+        font-size: clamp(24px, 4.5vw, 34px);
+        line-height: 1;
+        letter-spacing: -0.05em;
+        font-style: italic;
+        font-weight: 400;
+        font-family: "Nunito", Arial, sans-serif;
+      }
+
+      .footer-logo-band {
+        background:
+          radial-gradient(circle at 82% 18%, rgba(215, 253, 53, 0.16), transparent 30%),
+          radial-gradient(circle at 8% 85%, rgba(182, 117, 85, 0.24), transparent 32%),
+          linear-gradient(135deg, #090a0b 0%, #151719 58%, #252018 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: clamp(28px, 7vw, 60px) clamp(16px, 4vw, 32px) clamp(22px, 5vw, 44px);
+      }
+
+      .footer-logo-band img {
+        width: 100%;
+        max-width: none;
+        height: auto;
+        filter: drop-shadow(0 12px 30px rgba(0,0,0,.35));
+      }
+
+      .footer {
+        border-top: 1px solid var(--border);
+        padding: 22px clamp(24px, 5vw, 40px) 32px;
+        color: var(--muted);
+        font-size: 14px;
+        text-align: center;
+        font-weight: 700;
+      }
+
+      .footer a {
+        color: var(--clay);
+        font-weight: 900;
+        border-bottom: 2px solid transparent;
+        transition: color .2s ease, border-color .2s ease;
+      }
+
+      .footer a:hover {
+        color: var(--ink);
+        border-color: var(--neon);
+      }
+
+      @media (max-width: 760px) {
+        .wrap { width: min(100% - 22px, 780px); padding-top: 16px; }
+        .hub-shell { border-radius: 30px; }
+        .brand-row { align-items: flex-start; }
+      }
+
+
+      .downloads-list, .partners-list {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .download-card, .partner-card {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 20px 22px;
+        border: 1px solid var(--ink);
+        border-radius: 22px;
+        background: var(--white);
+        box-shadow: 0 8px 22px rgba(16,18,21,.06);
+        transition: transform .2s ease, box-shadow .2s ease;
+      }
+
+      .download-card:hover, .partner-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 14px 30px rgba(16,18,21,.1);
+      }
+
+      .download-info, .partner-info { flex: 1; }
+
+      .download-name, .partner-name {
+        font-size: 16.5px;
+        font-weight: 900;
+        letter-spacing: -0.02em;
+        color: var(--ink);
+      }
+
+      .partner-name { margin-bottom: 4px; }
+
+      .partner-description { font-size: 13.5px; color: var(--muted); font-weight: 700; }
+
+      .download-btn, .partner-link {
+        padding: 12px 20px;
+        border-radius: 999px;
+        background: var(--ink);
+        color: var(--cream);
+        font-weight: 900;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: .05em;
+        white-space: nowrap;
+        transition: background .2s ease, color .2s ease, transform .2s ease;
+      }
+
+      .download-btn:hover, .partner-link:hover {
+        background: var(--neon);
+        color: var(--ink);
+        transform: translateY(-2px);
+      }
+
+      @media (max-width: 600px) {
+        .download-card, .partner-card { flex-direction: column; align-items: flex-start; }
+        .download-btn, .partner-link { align-self: stretch; text-align: center; }
+      }
+
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <div class="announcement">ShroomBloom Grow Hub &bull; Trusted vendors we recommend</div>
+
+      <div class="wrap">
+        <section class="hub-shell">
+          <header class="hero-panel">
+            <div class="hero-inner">
+              <div class="brand-row">
+                <a class="brand" href="index.html" aria-label="ShroomBloom Home">
+                  <img class="brand-logo-img" src="nublume-SB-logo.png" alt="Nublume" />
+                </a>
+                <a href="index.html" class="back-pill">&larr; Back to Hub</a>
+              </div>
+
+              <h1>Spore Partners</h1>
+              <p class="hero-copy">Trusted vendors we recommend for spores and cultures.</p>
+              
+            </div>
+          </header>
+
+          <section class="section">
+            <div class="partners-list">
+
+<div class="partner-card">
+<div class="partner-info">
+<div class="partner-name">Inoculate The World</div>
+<div class="partner-description">Code: <span style="color: var(--clay); font-weight: 900;">Nublume20</span></div>
+</div>
+<a class="partner-link" href="https://inoculatetheworld.com/product-category/isolated-syringes/" target="_blank">Click Here</a>
+</div>
+<div class="partner-card">
+<div class="partner-info">
+<div class="partner-name">SporesMD</div>
+<div class="partner-description">Code: <span style="color: var(--clay); font-weight: 900;">Nublume20</span></div>
+</div>
+<a class="partner-link" href="https://sporesmd.com/shop/microscopy-liquid-cultures/" target="_blank">Click Here</a>
+</div>
+<div class="partner-card">
+<div class="partner-info">
+<div class="partner-name">Thick Spores</div>
+<div class="partner-description">Code: <span style="color: var(--clay); font-weight: 900;">Bloom15</span></div>
+</div>
+<a class="partner-link" href="https://thickspores.com/" target="_blank">Click Here</a>
+</div>
+            </div>
+          </section>
+
+          <footer class="footer">
+            
       Have a vendor recommendation? Reach out to us on Discord
-    </div>
-  </div>
-</body>
+    
+          </footer>
+
+          <div class="footer-logo-band">
+            <img src="https://raw.githubusercontent.com/livekyn/shroombloom-logo/main/SB-Logo.png" alt="ShroomBloom" />
+          </div>
+        </section>
+      </div>
+    </main>
+  </body>
 </html>
