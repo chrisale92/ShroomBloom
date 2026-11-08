@@ -528,6 +528,83 @@
         .community-note { grid-template-columns: 1fr; }
         .mini-pill { justify-self: start; }
       }
+
+      /* Next Grow offer — matched to ShroomBloom's existing theme */
+      .next-grow-offer {
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 28px;
+        padding: clamp(26px, 5vw, 42px) clamp(18px, 5vw, 38px);
+        border: 1px solid var(--ink);
+        border-radius: 26px;
+        background:
+          radial-gradient(circle at 85% 12%, rgba(215,253,53,.15), transparent 35%),
+          linear-gradient(135deg, #101215 0%, #1d211d 100%);
+        color: var(--cream);
+        text-align: center;
+        box-shadow: 0 16px 38px rgba(16,18,21,.17);
+      }
+      .next-grow-offer > * { position: relative; z-index: 1; }
+      .next-grow-eyebrow {
+        margin: 0 0 16px;
+        color: var(--neon);
+        font-size: 11px;
+        font-weight: 900;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+      }
+      .next-grow-offer h2 {
+        max-width: 570px;
+        margin: 0 auto;
+        font-size: clamp(28px, 5.3vw, 43px);
+        line-height: 1.12;
+        letter-spacing: -.055em;
+        font-weight: 900;
+      }
+      .next-grow-description {
+        max-width: 520px;
+        margin: 15px auto 22px;
+        color: rgba(255,250,242,.83);
+        font-size: clamp(14px, 2.5vw, 16px);
+        line-height: 1.55;
+        font-weight: 600;
+      }
+      .next-grow-cta {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 3px;
+        width: min(100%, 455px);
+        min-height: 68px;
+        margin: 0 auto;
+        padding: 13px 16px;
+        border: 1px solid var(--neon);
+        border-radius: 13px;
+        background: var(--neon);
+        color: var(--ink);
+        font-size: 16px;
+        line-height: 1.25;
+        font-weight: 900;
+        box-shadow: 0 10px 25px rgba(215,253,53,.13);
+        transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
+      }
+      .next-grow-cta:hover,
+      .next-grow-cta:focus-visible {
+        background: var(--neon-hover);
+        transform: translateY(-2px);
+        box-shadow: 0 14px 30px rgba(215,253,53,.22);
+      }
+      .next-grow-code {
+        font-size: 12px;
+        font-weight: 900;
+        letter-spacing: .06em;
+        text-transform: uppercase;
+      }
+      @media (max-width: 480px) {
+        .next-grow-offer { margin-bottom: 24px; }
+        .next-grow-cta { font-size: 14px; }
+      }
     </style>
   </head>
   <body>
@@ -556,6 +633,15 @@
           </header>
 
           <section class="section">
+            <aside class="next-grow-offer" aria-label="Next grow special offer">
+              <p class="next-grow-eyebrow">Exclusive to the NuBlume Community</p>
+              <h2>Loved Your First Grow? Your Next One Gets Better.</h2>
+              <p class="next-grow-description">Explore a new mushroom variety, try a bigger kit, and enjoy 20% off your next growing adventure.</p>
+              <a class="next-grow-cta" href="https://nublumemushroom.com/" target="_blank" rel="noopener noreferrer" aria-label="Unlock your next grow, 20 percent off. Code Nublume20. Visit NuBlume's website">
+                <span>Unlock Your Next Grow — 20% Off</span>
+                <span class="next-grow-code">Code: Nublume20</span>
+              </a>
+            </aside>
             <div class="section-title">
               <h2>Start here</h2>
               <span>Most used</span>
