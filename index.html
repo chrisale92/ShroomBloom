@@ -1,787 +1,1305 @@
+
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ShroomBloom - Your Grow Hub</title>
-    <meta
-      name="description"
-      content="ShroomBloom grow kit resource hub for video guides, replacement support, quick start instructions, FAQs, spore partners, downloads, and community support."
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900;1000&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      :root {
-        --ink: #101215;
-        --ink-soft: #26282b;
-        --cream: #f4efe7;
-        --cream-2: #ebe1d4;
-        --sand: #d5b99a;
-        --clay: #b67555;
-        --moss: #47543f;
-        --neon: #d7fd35;
-        --neon-hover: #bfef00;
-        --white: #fffaf2;
-        --muted: #70675d;
-        --border: rgba(16, 18, 21, 0.18);
-        --dark-border: rgba(255, 250, 242, 0.16);
-        --radius: 28px;
-        --shadow: 0 30px 80px rgba(16, 18, 21, 0.18);
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ShroomBloom - Your Grow Hub</title>
+  <meta name="description" content="ShroomBloom grow kit resource hub for video guides, replacement support, quick start instructions, FAQs, spore partners, downloads, and community support." />
 
-      * { box-sizing: border-box; }
-      html { scroll-behavior: smooth; }
-      body {
-        margin: 0;
-        min-height: 100vh;
-        font-family: "Nunito", Arial, sans-serif;
-        color: var(--ink);
-        background:
-          radial-gradient(circle at 15% 10%, rgba(215, 253, 53, 0.18), transparent 28%),
-          radial-gradient(circle at 88% 18%, rgba(182, 117, 85, 0.16), transparent 25%),
-          linear-gradient(180deg, var(--cream) 0%, var(--cream-2) 100%);
-        line-height: 1.45;
-      }
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900;1000&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
 
-      a { color: inherit; text-decoration: none; }
-      button { font: inherit; }
-      img { max-width: 100%; display: block; }
+  <style>
+    :root {
+      --ink: #101215;
+      --ink-soft: #26282b;
+      --cream: #f4efe7;
+      --cream-2: #ebe1d4;
+      --sand: #d5b99a;
+      --clay: #b67555;
+      --moss: #47543f;
+      --neon: #d7fd35;
+      --neon-hover: #bfef00;
+      --white: #fffaf2;
+      --muted: #70675d;
+      --border: rgba(16,18,21,.18);
+      --dark-border: rgba(255,250,242,.16);
+      --radius: 28px;
+      --shadow: 0 30px 80px rgba(16,18,21,.18);
+    }
 
-      .page {
-        min-height: 100vh;
-        overflow: hidden;
-        position: relative;
-        padding-bottom: 40px;
-      }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Nunito", Arial, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 15% 10%, rgba(215,253,53,.18), transparent 28%),
+        radial-gradient(circle at 88% 18%, rgba(182,117,85,.16), transparent 25%),
+        linear-gradient(180deg, var(--cream) 0%, var(--cream-2) 100%);
+      line-height: 1.45;
+    }
 
-      .page::before {
-        content: "";
-        position: fixed;
-        inset: 0;
-        pointer-events: none;
-        background-image:
-          linear-gradient(rgba(16,18,21,.045) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(16,18,21,.035) 1px, transparent 1px);
-        background-size: 44px 44px;
-        mask-image: linear-gradient(to bottom, black, transparent 75%);
-      }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    img { max-width: 100%; display: block; }
 
-      .announcement {
-        position: relative;
-        z-index: 2;
-        background: var(--neon);
-        color: var(--ink);
-        text-align: center;
-        font-size: 12px;
-        font-weight: 900;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        padding: 10px 16px;
-        border-bottom: 1px solid rgba(16,18,21,.16);
-      }
+    .page {
+      min-height: 100vh;
+      overflow: hidden;
+      position: relative;
+      padding-bottom: 40px;
+    }
 
+    .page::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(16,18,21,.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(16,18,21,.035) 1px, transparent 1px);
+      background-size: 44px 44px;
+      mask-image: linear-gradient(to bottom, black, transparent 75%);
+    }
+
+    .announcement {
+      position: relative;
+      z-index: 2;
+      background: var(--neon);
+      color: var(--ink);
+      text-align: center;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 10px 16px;
+      border-bottom: 1px solid rgba(16,18,21,.16);
+    }
+
+    .wrap {
+      position: relative;
+      z-index: 2;
+      width: min(780px, calc(100% - 30px));
+      margin: 0 auto;
+      padding: 28px 0 0;
+    }
+
+    .hub-shell {
+      border: 1px solid var(--ink);
+      border-radius: 38px;
+      overflow: hidden;
+      background: var(--cream);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-panel {
+      position: relative;
+      color: var(--cream);
+      background:
+        radial-gradient(circle at 82% 18%, rgba(215,253,53,.22), transparent 25%),
+        radial-gradient(circle at 8% 85%, rgba(182,117,85,.32), transparent 28%),
+        linear-gradient(135deg, #090a0b 0%, #151719 58%, #252018 100%);
+      padding: clamp(28px,6vw,54px);
+      overflow: hidden;
+    }
+
+    .hero-panel::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: linear-gradient(to bottom, black, transparent 86%);
+    }
+
+    .hero-inner { position: relative; z-index: 1; }
+
+    .brand-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 900;
+      font-size: 24px;
+      letter-spacing: -.05em;
+    }
+
+    .brand-logo-img {
+      height: 58px;
+      width: auto;
+      display: block;
+      filter: drop-shadow(0 10px 24px rgba(0,0,0,.28));
+    }
+
+    .brand-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 50% 50% 45% 45%;
+      background:
+        radial-gradient(circle at 50% 18%, var(--cream) 0 15%, transparent 16%),
+        linear-gradient(140deg, var(--neon), #92a855 62%, var(--moss));
+      box-shadow: inset 0 -8px 16px rgba(16,18,21,.25);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      border: 1px solid rgba(255,250,242,.26);
+      padding: 9px 14px;
+      color: rgba(255,250,242,.78);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .footer-logo-band {
+      background:
+        radial-gradient(circle at 82% 18%, rgba(215,253,53,.16), transparent 30%),
+        radial-gradient(circle at 8% 85%, rgba(182,117,85,.24), transparent 32%),
+        linear-gradient(135deg, #090a0b 0%, #151719 58%, #252018 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: clamp(28px,7vw,60px) clamp(16px,4vw,32px) clamp(22px,5vw,44px);
+    }
+
+    .footer-logo-band img {
+      width: 100%;
+      max-width: none;
+      height: auto;
+      filter: drop-shadow(0 12px 30px rgba(0,0,0,.35));
+    }
+
+    h1 {
+      margin: 0;
+      font-family: "Nunito", Arial, sans-serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(42px,9vw,76px);
+      line-height: .98;
+      letter-spacing: -.06em;
+      max-width: 620px;
+    }
+
+    .hero-copy {
+      margin: 20px 0 0;
+      color: rgba(255,250,242,.82);
+      font-size: clamp(17px,3.5vw,22px);
+      max-width: 600px;
+    }
+
+    .alert-banner {
+      margin-top: 28px;
+      border-radius: 24px;
+      border: 1px solid var(--neon);
+      background: rgba(16,18,21,.76);
+      padding: 18px 20px;
+      color: var(--cream);
+      box-shadow: 0 20px 50px rgba(0,0,0,.18);
+    }
+
+    .alert-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 6px;
+      color: var(--neon);
+      font-weight: 900;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
+    .alert-banner p {
+      margin: 0;
+      color: rgba(255,250,242,.88);
+      font-size: 15px;
+    }
+
+    .section { padding: clamp(24px,5vw,40px); }
+
+    .section-title {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .section-title h2 {
+      margin: 0;
+      font-size: clamp(26px,5vw,40px);
+      line-height: 1;
+      letter-spacing: -.06em;
+    }
+
+    .section-title span {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .resource-grid {
+      display: grid;
+      grid-template-columns: repeat(2,minmax(0,1fr));
+      gap: 14px;
+    }
+
+    .resource-grid.primary {
+      grid-template-columns: repeat(3,minmax(0,1fr));
+    }
+
+    .resource-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      min-height: 166px;
+      border: 1px solid var(--ink);
+      border-radius: 26px;
+      background: var(--white);
+      color: var(--ink);
+      padding: 20px;
+      cursor: pointer;
+      overflow: hidden;
+      box-shadow: 0 10px 28px rgba(16,18,21,.08);
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+    }
+
+    .resource-card:hover,
+    .resource-card:focus-visible {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 42px rgba(16,18,21,.14);
+      outline: none;
+    }
+
+    .resource-card::before {
+      content: "";
+      position: absolute;
+      inset: auto -30px -48px auto;
+      width: 112px;
+      height: 112px;
+      border-radius: 50%;
+      background: var(--neon);
+      opacity: .55;
+      transition: transform .2s ease;
+    }
+
+    .resource-card:hover::before,
+    .resource-card:focus-visible::before {
+      transform: scale(1.12);
+    }
+
+    .resource-card.dark {
+      background: var(--ink);
+      color: var(--cream);
+    }
+
+    .resource-card.dark .resource-description {
+      color: rgba(255,250,242,.72);
+    }
+
+    .resource-card.dark .resource-icon {
+      background: var(--neon);
+      color: var(--ink);
+    }
+
+    .resource-card.dark::before {
+      background: rgba(255,250,242,.12);
+      opacity: 1;
+    }
+
+    .resource-card.neon { background: var(--neon); }
+
+    .resource-card.neon::before {
+      background: rgba(16,18,21,.13);
+      opacity: 1;
+    }
+
+    .resource-icon {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      place-items: center;
+      width: 48px;
+      height: 48px;
+      margin-bottom: 16px;
+      border-radius: 16px;
+      background: var(--ink);
+      color: var(--cream);
+    }
+
+    .resource-icon svg {
+      width: 25px;
+      height: 25px;
+      fill: currentColor;
+    }
+
+    .resource-title {
+      position: relative;
+      z-index: 1;
+      margin: 0 0 6px;
+      font-size: 19px;
+      line-height: 1.06;
+      font-weight: 900;
+      letter-spacing: -.04em;
+    }
+
+    .resource-description {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .community-note {
+      margin-top: 14px;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      background: var(--cream-2);
+      padding: 18px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .community-note strong {
+      display: block;
+      font-size: 17px;
+      line-height: 1.15;
+    }
+
+    .community-note span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .mini-pill {
+      border-radius: 999px;
+      border: 1px solid var(--ink);
+      background: var(--ink);
+      color: var(--cream);
+      padding: 11px 16px;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .footer {
+      border-top: 1px solid var(--border);
+      padding: 22px clamp(24px,5vw,40px) 32px;
+      color: var(--muted);
+      font-size: 14px;
+      text-align: center;
+      font-weight: 700;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: rgba(16,18,21,.72);
+      backdrop-filter: blur(14px);
+    }
+
+    .modal.active { display: flex; }
+
+    .modal-content {
+      position: relative;
+      width: min(460px,100%);
+      border: 1px solid var(--ink);
+      border-radius: 32px;
+      background: var(--cream);
+      color: var(--ink);
+      padding: 34px;
+      box-shadow: var(--shadow);
+      animation: modalIn .22s ease;
+      overflow: hidden;
+    }
+
+    .modal-content::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      height: 12px;
+      background: var(--neon);
+    }
+
+    @keyframes modalIn {
+      from { opacity: 0; transform: translateY(10px) scale(.98); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--ink);
+      border-radius: 50%;
+      background: var(--cream);
+      color: var(--ink);
+      cursor: pointer;
+      font-size: 24px;
+      line-height: 1;
+      display: grid;
+      place-items: center;
+    }
+
+    .close-modal:hover { background: var(--neon); }
+
+    .modal h2 {
+      margin: 8px 50px 12px 0;
+      font-family: "Nunito", Arial, sans-serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 36px;
+      letter-spacing: -.06em;
+      line-height: 1;
+    }
+
+    .modal p {
+      margin: 0 0 22px;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .community-options {
+      display: grid;
+      gap: 12px;
+    }
+
+    .community-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      border: 1px solid var(--ink);
+      border-radius: 999px;
+      background: var(--ink);
+      color: var(--cream);
+      padding: 16px 20px;
+      font-weight: 900;
+      transition: transform .2s ease, background .2s ease, color .2s ease;
+    }
+
+    .community-btn:hover {
+      transform: translateY(-2px);
+      background: var(--neon);
+      color: var(--ink);
+    }
+
+    @media (max-width: 760px) {
       .wrap {
-        position: relative;
-        z-index: 2;
-        width: min(780px, calc(100% - 30px));
-        margin: 0 auto;
-        padding: 28px 0 0;
+        width: min(100% - 22px,780px);
+        padding-top: 16px;
       }
+      .hub-shell { border-radius: 30px; }
+      .brand-row { align-items: flex-start; }
+      .badge { display: none; }
+      .resource-grid,
+      .resource-grid.primary { grid-template-columns: 1fr; }
+      .resource-card { min-height: 134px; }
+      .community-note { grid-template-columns: 1fr; }
+      .mini-pill { justify-self: start; }
+    }
 
-      .hub-shell {
-        border: 1px solid var(--ink);
-        border-radius: 38px;
-        overflow: hidden;
-        background: var(--cream);
-        box-shadow: var(--shadow);
+    /* =========================================
+       VIP GROWER EXCLUSIVE
+       ========================================= */
+
+    .next-grow-offer {
+      background: #141517;
+      color: #fff;
+      border-radius: 28px;
+      padding: clamp(24px,5vw,36px) clamp(18px,4vw,32px);
+      text-align: center;
+      margin-bottom: 28px;
+      border: 1px solid rgba(255,255,255,.12);
+      box-shadow: 0 14px 40px rgba(0,0,0,.18);
+    }
+
+    .next-grow-eyebrow {
+      margin: 0 0 16px;
+      color: var(--neon);
+      font-size: 12px;
+      letter-spacing: .08em;
+      font-weight: 900;
+    }
+
+    .next-grow-offer h2 {
+      margin: 0 auto;
+      font-size: clamp(28px,5vw,42px);
+      line-height: 1.13;
+      font-weight: 900;
+      letter-spacing: -.045em;
+    }
+
+    .offer-accent { color: var(--neon); }
+
+    .next-grow-description {
+      margin: 17px auto 20px;
+      max-width: 690px;
+      font-size: clamp(14px,2.6vw,17px);
+      color: rgba(255,255,255,.84);
+      line-height: 1.45;
+    }
+
+    .offer-savings {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      color: var(--neon);
+      margin: 16px auto 22px;
+    }
+
+    .offer-savings strong {
+      font-size: clamp(48px,8vw,70px);
+      font-weight: 1000;
+      letter-spacing: -.07em;
+      line-height: 1;
+    }
+
+    .offer-savings > div {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      line-height: 1;
+      text-align: left;
+    }
+
+    .offer-savings > div > span {
+      font-size: clamp(28px,5vw,42px);
+      font-weight: 1000;
+      letter-spacing: -.05em;
+    }
+
+    .offer-savings small {
+      margin-top: 6px;
+      font-size: 11px;
+      color: #fff;
+      font-weight: 900;
+    }
+
+    /* ACTIVE COUNTDOWN */
+
+    .offer-countdown {
+      background: rgba(255,255,255,.065);
+      border: 1.5px solid rgba(255,255,255,.24);
+      border-radius: 19px;
+      padding: 18px 16px 19px;
+      margin-bottom: 14px;
+      min-height: 148px;
+    }
+
+    .offer-countdown-heading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      min-height: 29px;
+      margin-bottom: 16px;
+      color: #fff;
+      font-size: clamp(11px,2.2vw,15px);
+      line-height: 1.3;
+      font-weight: 900;
+      letter-spacing: .025em;
+    }
+
+    .offer-live-dot {
+      display: inline-flex;
+      color: var(--neon);
+      font-size: 18px;
+    }
+
+    .offer-time-units {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 4px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .offer-time-unit {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .offer-time-unit strong {
+      font-size: clamp(34px,7vw,52px);
+      line-height: 1;
+      color: #fff;
+      font-weight: 900;
+    }
+
+    .offer-time-unit small {
+      font-size: 11px;
+      color: rgba(255,255,255,.65);
+      letter-spacing: .04em;
+    }
+
+    .offer-sale-over {
+      display: none;
+      font-size: clamp(24px,5vw,34px);
+      font-weight: 1000;
+      letter-spacing: .025em;
+      color: #ff6a6a;
+      text-shadow: 0 0 14px rgba(255,55,55,.45);
+      margin: 0 0 7px;
+    }
+
+    /* OFFER BUTTON */
+
+    .next-grow-cta {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      width: 100%;
+      min-height: 84px;
+      border-radius: 16px;
+      background: var(--neon);
+      color: #101215;
+      font-size: clamp(17px,3vw,25px);
+      line-height: 1.25;
+      font-weight: 1000;
+      text-align: center;
+      padding: 16px;
+      transition: background .2s ease, transform .2s ease;
+    }
+
+    .next-grow-cta:hover,
+    .next-grow-cta:focus-visible {
+      background: var(--neon-hover);
+      transform: translateY(-2px);
+    }
+
+    .next-grow-code {
+      font-size: clamp(13px,2.1vw,17px);
+      font-weight: 900;
+    }
+
+    .offer-footnote {
+      margin: 14px auto 0;
+      color: rgba(255,255,255,.64);
+      font-size: 12px;
+    }
+
+    /* =========================================
+       EXPIRED STATE - 24 HOURS
+       ========================================= */
+
+    .offer-countdown.is-expired {
+      border-color: #ff404b;
+      background: rgba(150,22,32,.2);
+      box-shadow: 0 0 18px rgba(255,50,66,.13);
+    }
+
+    .offer-countdown.is-expired .offer-countdown-heading {
+      display: none;
+    }
+
+    .offer-countdown.is-expired .offer-sale-over {
+      display: block;
+      animation: saleExpiredBlink 1.3s ease-in-out infinite;
+    }
+
+    .next-grow-cta.is-paused {
+      background: #636469;
+      color: #f4f4f4;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    .next-grow-cta.is-paused:hover {
+      transform: none;
+      background: #636469;
+    }
+
+    @keyframes saleExpiredBlink {
+      0%,100% { opacity: 1; }
+      50% { opacity: .48; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .offer-countdown.is-expired .offer-sale-over {
+        animation: none;
       }
+    }
 
-      .hero-panel {
-        position: relative;
-        color: var(--cream);
-        background:
-          radial-gradient(circle at 82% 18%, rgba(215, 253, 53, 0.22), transparent 25%),
-          radial-gradient(circle at 8% 85%, rgba(182, 117, 85, 0.32), transparent 28%),
-          linear-gradient(135deg, #090a0b 0%, #151719 58%, #252018 100%);
-        padding: clamp(28px, 6vw, 54px);
-        overflow: hidden;
+    @media (max-width: 480px) {
+      .offer-countdown {
+        padding: 14px 10px;
+        min-height: 135px;
       }
+      .offer-time-unit small { font-size: 9px; }
+      .next-grow-offer { padding: 24px 15px; }
+    }
+  </style>
+</head>
 
-      .hero-panel::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background-image:
-          linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
-        background-size: 42px 42px;
-        mask-image: linear-gradient(to bottom, black, transparent 86%);
-      }
+<body>
+  <main class="page">
 
-      .hero-inner {
-        position: relative;
-        z-index: 1;
-      }
+    <div class="announcement">
+      ShroomBloom Grow Hub • Scan your kit, pick your resource, start growing
+    </div>
 
-      .brand-row {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 16px;
-        margin-bottom: 28px;
-      }
+    <div class="wrap">
+      <section class="hub-shell" aria-label="ShroomBloom grow hub resources">
 
-      .brand {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        font-weight: 900;
-        font-size: 24px;
-        letter-spacing: -0.05em;
-      }
+        <!-- HEADER -->
 
+        <header class="hero-panel">
+          <div class="hero-inner">
 
-      .brand-logo-img {
-        height: 58px;
-        width: auto;
-        display: block;
-        filter: drop-shadow(0 10px 24px rgba(0,0,0,.28));
-      }
-
-      .brand-mark {
-        width: 32px;
-        height: 32px;
-        border-radius: 50% 50% 45% 45%;
-        background:
-          radial-gradient(circle at 50% 18%, var(--cream) 0 15%, transparent 16%),
-          linear-gradient(140deg, var(--neon), #92a855 62%, var(--moss));
-        box-shadow: inset 0 -8px 16px rgba(16,18,21,.25);
-      }
-
-      .badge {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 999px;
-        border: 1px solid rgba(255,250,242,.26);
-        padding: 9px 14px;
-        color: rgba(255,250,242,.78);
-        font-size: 11px;
-        font-weight: 900;
-        letter-spacing: .1em;
-        text-transform: uppercase;
-        white-space: nowrap;
-      }
-
-      .footer-logo-band {
-        background:
-          radial-gradient(circle at 82% 18%, rgba(215, 253, 53, 0.16), transparent 30%),
-          radial-gradient(circle at 8% 85%, rgba(182, 117, 85, 0.24), transparent 32%),
-          linear-gradient(135deg, #090a0b 0%, #151719 58%, #252018 100%);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: clamp(28px, 7vw, 60px) clamp(16px, 4vw, 32px) clamp(22px, 5vw, 44px);
-      }
-
-      .footer-logo-band img {
-        width: 100%;
-        max-width: none;
-        height: auto;
-        filter: drop-shadow(0 12px 30px rgba(0,0,0,.35));
-      }
-
-      h1 {
-        margin: 0;
-        font-family: "Nunito", Arial, sans-serif;
-        font-style: italic;
-        font-weight: 400;
-        font-size: clamp(42px, 9vw, 76px);
-        line-height: .98;
-        letter-spacing: -0.06em;
-        max-width: 620px;
-      }
-
-      .hero-copy {
-        margin: 20px 0 0;
-        color: rgba(255,250,242,.82);
-        font-size: clamp(17px, 3.5vw, 22px);
-        max-width: 600px;
-      }
-
-      .alert-banner {
-        margin-top: 28px;
-        border-radius: 24px;
-        border: 1px solid var(--neon);
-        background: rgba(16,18,21,.76);
-        padding: 18px 20px;
-        color: var(--cream);
-        box-shadow: 0 20px 50px rgba(0,0,0,.18);
-      }
-
-      .alert-title {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        margin-bottom: 6px;
-        color: var(--neon);
-        font-weight: 900;
-        letter-spacing: .04em;
-        text-transform: uppercase;
-      }
-
-      .alert-banner p {
-        margin: 0;
-        color: rgba(255,250,242,.88);
-        font-size: 15px;
-      }
-
-      .section {
-        padding: clamp(24px, 5vw, 40px);
-      }
-
-      .section-title {
-        display: flex;
-        align-items: end;
-        justify-content: space-between;
-        gap: 16px;
-        margin-bottom: 18px;
-      }
-
-      .section-title h2 {
-        margin: 0;
-        font-size: clamp(26px, 5vw, 40px);
-        line-height: 1;
-        letter-spacing: -0.06em;
-      }
-
-      .section-title span {
-        color: var(--muted);
-        font-size: 13px;
-        font-weight: 900;
-        letter-spacing: .1em;
-        text-transform: uppercase;
-        white-space: nowrap;
-      }
-
-      .resource-grid {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 14px;
-      }
-
-      .resource-grid.primary {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
-
-      .resource-card {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        min-height: 166px;
-        border: 1px solid var(--ink);
-        border-radius: 26px;
-        background: var(--white);
-        color: var(--ink);
-        padding: 20px;
-        cursor: pointer;
-        overflow: hidden;
-        box-shadow: 0 10px 28px rgba(16,18,21,.08);
-        transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
-      }
-
-      .resource-card:hover,
-      .resource-card:focus-visible {
-        transform: translateY(-3px);
-        box-shadow: 0 18px 42px rgba(16,18,21,.14);
-        outline: none;
-      }
-
-      .resource-card::before {
-        content: "";
-        position: absolute;
-        inset: auto -30px -48px auto;
-        width: 112px;
-        height: 112px;
-        border-radius: 50%;
-        background: var(--neon);
-        opacity: .55;
-        transition: transform .2s ease;
-      }
-
-      .resource-card:hover::before,
-      .resource-card:focus-visible::before {
-        transform: scale(1.12);
-      }
-
-      .resource-card.dark {
-        background: var(--ink);
-        color: var(--cream);
-      }
-
-      .resource-card.dark .resource-description { color: rgba(255,250,242,.72); }
-      .resource-card.dark .resource-icon { background: var(--neon); color: var(--ink); }
-      .resource-card.dark::before { background: rgba(255,250,242,.12); opacity: 1; }
-
-      .resource-card.neon {
-        background: var(--neon);
-      }
-
-      .resource-card.neon::before { background: rgba(16,18,21,.13); opacity: 1; }
-
-      .resource-icon {
-        position: relative;
-        z-index: 1;
-        display: grid;
-        place-items: center;
-        width: 48px;
-        height: 48px;
-        margin-bottom: 16px;
-        border-radius: 16px;
-        background: var(--ink);
-        color: var(--cream);
-      }
-
-      .resource-icon svg {
-        width: 25px;
-        height: 25px;
-        fill: currentColor;
-      }
-
-      .resource-title {
-        position: relative;
-        z-index: 1;
-        margin: 0 0 6px;
-        font-size: 19px;
-        line-height: 1.06;
-        font-weight: 900;
-        letter-spacing: -0.04em;
-      }
-
-      .resource-description {
-        position: relative;
-        z-index: 1;
-        margin: 0;
-        color: var(--muted);
-        font-size: 14px;
-        font-weight: 600;
-      }
-
-      .community-note {
-        margin-top: 14px;
-        border: 1px solid var(--border);
-        border-radius: 24px;
-        background: var(--cream-2);
-        padding: 18px;
-        display: grid;
-        grid-template-columns: 1fr auto;
-        gap: 16px;
-        align-items: center;
-      }
-
-      .community-note strong {
-        display: block;
-        font-size: 17px;
-        line-height: 1.15;
-      }
-
-      .community-note span {
-        color: var(--muted);
-        font-size: 14px;
-      }
-
-      .mini-pill {
-        border-radius: 999px;
-        border: 1px solid var(--ink);
-        background: var(--ink);
-        color: var(--cream);
-        padding: 11px 16px;
-        font-size: 12px;
-        font-weight: 900;
-        letter-spacing: .06em;
-        text-transform: uppercase;
-        white-space: nowrap;
-      }
-
-      .footer {
-        border-top: 1px solid var(--border);
-        padding: 22px clamp(24px, 5vw, 40px) 32px;
-        color: var(--muted);
-        font-size: 14px;
-        text-align: center;
-        font-weight: 700;
-      }
-
-      .modal {
-        display: none;
-        position: fixed;
-        inset: 0;
-        z-index: 1000;
-        align-items: center;
-        justify-content: center;
-        padding: 20px;
-        background: rgba(16,18,21,.72);
-        backdrop-filter: blur(14px);
-      }
-
-      .modal.active { display: flex; }
-
-      .modal-content {
-        position: relative;
-        width: min(460px, 100%);
-        border: 1px solid var(--ink);
-        border-radius: 32px;
-        background: var(--cream);
-        color: var(--ink);
-        padding: 34px;
-        box-shadow: var(--shadow);
-        animation: modalIn .22s ease;
-        overflow: hidden;
-      }
-
-      .modal-content::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        height: 12px;
-        background: var(--neon);
-      }
-
-      @keyframes modalIn {
-        from { opacity: 0; transform: translateY(10px) scale(.98); }
-        to { opacity: 1; transform: translateY(0) scale(1); }
-      }
-
-      .close-modal {
-        position: absolute;
-        top: 18px;
-        right: 18px;
-        width: 42px;
-        height: 42px;
-        border: 1px solid var(--ink);
-        border-radius: 50%;
-        background: var(--cream);
-        color: var(--ink);
-        cursor: pointer;
-        font-size: 24px;
-        line-height: 1;
-        display: grid;
-        place-items: center;
-      }
-
-      .close-modal:hover { background: var(--neon); }
-
-      .modal h2 {
-        margin: 8px 50px 12px 0;
-        font-family: "Nunito", Arial, sans-serif;
-        font-style: italic;
-        font-weight: 400;
-        font-size: 36px;
-        letter-spacing: -0.06em;
-        line-height: 1;
-      }
-
-      .modal p {
-        margin: 0 0 22px;
-        color: var(--muted);
-        font-weight: 600;
-      }
-
-      .community-options {
-        display: grid;
-        gap: 12px;
-      }
-
-      .community-btn {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        border: 1px solid var(--ink);
-        border-radius: 999px;
-        background: var(--ink);
-        color: var(--cream);
-        padding: 16px 20px;
-        font-weight: 900;
-        transition: transform .2s ease, background .2s ease, color .2s ease;
-      }
-
-      .community-btn:hover {
-        transform: translateY(-2px);
-        background: var(--neon);
-        color: var(--ink);
-      }
-
-      @media (max-width: 760px) {
-        .wrap { width: min(100% - 22px, 780px); padding-top: 16px; }
-        .hub-shell { border-radius: 30px; }
-        .brand-row { align-items: flex-start; }
-        .badge { display: none; }
-        .resource-grid,
-        .resource-grid.primary { grid-template-columns: 1fr; }
-        .resource-card { min-height: 134px; }
-        .community-note { grid-template-columns: 1fr; }
-        .mini-pill { justify-self: start; }
-      }
-
-      /* Next Grow offer — matched to ShroomBloom's existing theme */
-      .next-grow-offer {
-        position: relative;
-        overflow: hidden;
-        margin-bottom: 28px;
-        padding: clamp(26px, 5vw, 42px) clamp(18px, 5vw, 38px);
-        border: 1px solid var(--ink);
-        border-radius: 26px;
-        background:
-          radial-gradient(circle at 85% 12%, rgba(215,253,53,.15), transparent 35%),
-          linear-gradient(135deg, #101215 0%, #1d211d 100%);
-        color: var(--cream);
-        text-align: center;
-        box-shadow: 0 16px 38px rgba(16,18,21,.17);
-      }
-      .next-grow-offer > * { position: relative; z-index: 1; }
-      .next-grow-eyebrow {
-        margin: 0 0 16px;
-        color: var(--neon);
-        font-size: 11px;
-        font-weight: 900;
-        letter-spacing: .12em;
-        text-transform: uppercase;
-      }
-      .next-grow-offer h2 {
-        max-width: 570px;
-        margin: 0 auto;
-        font-size: clamp(28px, 5.3vw, 43px);
-        line-height: 1.12;
-        letter-spacing: -.055em;
-        font-weight: 900;
-      }
-      .next-grow-description {
-        max-width: 520px;
-        margin: 15px auto 22px;
-        color: rgba(255,250,242,.83);
-        font-size: clamp(14px, 2.5vw, 16px);
-        line-height: 1.55;
-        font-weight: 600;
-      }
-      .next-grow-cta {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 3px;
-        width: min(100%, 455px);
-        min-height: 68px;
-        margin: 0 auto;
-        padding: 13px 16px;
-        border: 1px solid var(--neon);
-        border-radius: 13px;
-        background: var(--neon);
-        color: var(--ink);
-        font-size: 16px;
-        line-height: 1.25;
-        font-weight: 900;
-        box-shadow: 0 10px 25px rgba(215,253,53,.13);
-        transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
-      }
-      .next-grow-cta:hover,
-      .next-grow-cta:focus-visible {
-        background: var(--neon-hover);
-        transform: translateY(-2px);
-        box-shadow: 0 14px 30px rgba(215,253,53,.22);
-      }
-      .next-grow-code {
-        font-size: 12px;
-        font-weight: 900;
-        letter-spacing: .06em;
-        text-transform: uppercase;
-      }
-      @media (max-width: 480px) {
-        .next-grow-offer { margin-bottom: 24px; }
-        .next-grow-cta { font-size: 14px; }
-      }
-    </style>
-  </head>
-  <body>
-    <main class="page">
-      <div class="announcement">ShroomBloom Grow Hub • Scan your kit, pick your resource, start growing</div>
-
-      <div class="wrap">
-        <section class="hub-shell" aria-label="ShroomBloom grow hub resources">
-          <header class="hero-panel">
-            <div class="hero-inner">
-              <div class="brand-row">
-                <a class="brand" href="#" aria-label="Nublume">
-                  <img class="brand-logo-img" src="nublume-SB-logo.png" alt="Nublume" />
-                </a>
-                <div class="badge">Grow Support</div>
-              </div>
-
-              <h1>Welcome to your grow journey</h1>
-              <p class="hero-copy">Everything you need to get started, solve issues, and grow with confidence.</p>
-
-              <div class="alert-banner" role="note" aria-label="Amazon policy update">
-                <div class="alert-title">⚠️ UPDATE — NEW AMAZON POLICY</div>
-                <p>We can no longer contact customers for any reason on Amazon's platform. If something's not right, email us directly, and we'll fix it ASAP!</p>
-              </div>
-            </div>
-          </header>
-
-          <section class="section">
-            <aside class="next-grow-offer" aria-label="Next grow special offer">
-              <p class="next-grow-eyebrow">Exclusive to the NuBlume Community</p>
-              <h2>Loved Your First Grow? Your Next One Gets Better.</h2>
-              <p class="next-grow-description">Explore a new mushroom variety, try a bigger kit, and enjoy 20% off your next growing adventure.</p>
-              <a class="next-grow-cta" href="https://nublumemushroom.com/" target="_blank" rel="noopener noreferrer" aria-label="Unlock your next grow, 20 percent off. Code Nublume20. Visit NuBlume's website">
-                <span>Unlock Your Next Grow — 20% Off</span>
-                <span class="next-grow-code">Code: Nublume20</span>
+            <div class="brand-row">
+              <a class="brand" href="#" aria-label="Nublume">
+                <img class="brand-logo-img" src="nublume-SB-logo.png" alt="Nublume" />
               </a>
-            </aside>
-            <div class="section-title">
-              <h2>Start here</h2>
-              <span>Most used</span>
+              <div class="badge">Grow Support</div>
             </div>
 
-            <div class="resource-grid primary">
-              <a href="https://drive.google.com/file/d/1SRh4r72HB8lh1A9UdnCciocMyeyMTWmk/view?usp=drive_link" class="resource-card dark" target="_blank" rel="noopener">
-                <div class="resource-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                </div>
-                <h3 class="resource-title">Video Grow Guide</h3>
-                <p class="resource-description">Step-by-step walkthrough</p>
-              </a>
+            <h1>Welcome to your grow journey</h1>
 
-              <a href="https://qr1.be/WP4KB9" class="resource-card neon" target="_blank" rel="noopener">
-                <div class="resource-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
-                </div>
-                <h3 class="resource-title">Kit Issue & Replacement</h3>
-                <p class="resource-description">Report a problem with your kit</p>
-              </a>
+            <p class="hero-copy">
+              Everything you need to get started, solve issues,
+              and grow with confidence.
+            </p>
 
-              <button class="resource-card" id="communityBtn" type="button">
-                <div class="resource-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"/></svg>
-                </div>
-                <h3 class="resource-title">Growing Community</h3>
-                <p class="resource-description">Connect with other growers</p>
-              </button>
+            <div class="alert-banner" role="note" aria-label="Amazon policy update">
+              <div class="alert-title">⚠️ UPDATE — NEW AMAZON POLICY</div>
+              <p>
+                We can no longer contact customers for any reason on Amazon's platform.
+                If something's not right, email us directly, and we'll fix it ASAP!
+              </p>
             </div>
 
-            <div class="community-note">
+          </div>
+        </header>
+
+        <section class="section">
+
+          <!-- =====================================
+               VIP GROWER EXCLUSIVE PROMOTION
+               ===================================== -->
+
+          <aside class="next-grow-offer" id="vipOffer" aria-label="VIP Grower Exclusive">
+
+            <p class="next-grow-eyebrow">
+              ✦ VIP GROWER EXCLUSIVE ✦
+            </p>
+
+            <h2>
+              Your Next Grow Just Got
+              <span class="offer-accent">20% Better.</span>
+            </h2>
+
+            <p class="next-grow-description">
+              Your first grow was just the beginning.
+              Try a new variety or level up to a bigger kit
+              and save on your next mushroom adventure.
+            </p>
+
+            <div class="offer-savings" aria-label="20 percent off">
+              <strong>20%</strong>
               <div>
-                <strong>Join Our Growing Community</strong>
-                <span>For 24/7 Growing Support</span>
+                <span>OFF</span>
+                <small>YOUR NEXT GROW</small>
               </div>
-              <button class="mini-pill" type="button" id="communityPill">Join</button>
-            </div>
-          </section>
-
-          <section class="section" style="padding-top: 0;">
-            <div class="section-title">
-              <h2>Resources</h2>
-              <span>Grow tools</span>
             </div>
 
-            <div class="resource-grid">
-              <a href="quick-start.html" class="resource-card">
-                <div class="resource-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                </div>
-                <h3 class="resource-title">Quick Start</h3>
-                <p class="resource-description">Get growing in 6 weeks</p>
-              </a>
+            <!-- COUNTDOWN / EXPIRED MESSAGE -->
 
-              <a href="https://qr1.be/WP4KB9" class="resource-card" target="_blank" rel="noopener">
-                <div class="resource-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg>
-                </div>
-                <h3 class="resource-title">Contact Us</h3>
-                <p class="resource-description">Get in touch with our team</p>
-              </a>
+            <div class="offer-countdown" id="offerCountdown" aria-label="VIP promotion countdown">
 
-              <a href="faq.html" class="resource-card">
-                <div class="resource-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24"><path d="M11 18h2v-2h-2v2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5 0-2.21-1.79-4-4-4z"/></svg>
-                </div>
-                <h3 class="resource-title">FAQ's</h3>
-                <p class="resource-description">Find answers to common questions</p>
-              </a>
+              <div class="offer-countdown-heading">
+                <span class="offer-live-dot" aria-hidden="true">◷</span>
+                <span>CURRENT 48-HOUR OFFER WINDOW ENDS IN</span>
+              </div>
 
-              <a href="spore-partners.html" class="resource-card">
-                <div class="resource-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                </div>
-                <h3 class="resource-title">Spore Partners</h3>
-                <p class="resource-description">Trusted spore vendors</p>
-              </a>
+              <div class="offer-sale-over" id="offerSaleOver" role="status">
+                SALE IS OVER
+              </div>
 
-              <a href="downloads.html" class="resource-card dark" style="grid-column: 1 / -1;">
-                <div class="resource-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+              <div class="offer-time-units" role="timer" aria-live="off">
+
+                <div class="offer-time-unit">
+                  <strong id="offerHours">48</strong>
+                  <small>HOURS</small>
                 </div>
-                <h3 class="resource-title">Downloads</h3>
-                <p class="resource-description">Get guides and resources</p>
-              </a>
+
+                <div class="offer-time-unit">
+                  <strong id="offerMinutes">00</strong>
+                  <small>MINUTES</small>
+                </div>
+
+                <div class="offer-time-unit">
+                  <strong id="offerSeconds">00</strong>
+                  <small>SECONDS</small>
+                </div>
+
+              </div>
             </div>
-          </section>
 
-          <footer class="footer">
-            Questions? Check the video guide or reach out to the community
-          </footer>
+            <!-- OFFER BUTTON -->
 
-          <div class="footer-logo-band">
-            <img src="https://raw.githubusercontent.com/livekyn/shroombloom-logo/main/SB-Logo.png" alt="ShroomBloom" />
+            <a
+              class="next-grow-cta"
+              id="offerCTA"
+              href="https://nublumemushroom.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span>UNLOCK MY 20% OFF ↗</span>
+              <span class="next-grow-code">
+                USE CODE: NUBLUME20
+              </span>
+            </a>
+
+            <p class="offer-footnote">
+              A little thank-you for growing with NuBlume. Terms apply.
+            </p>
+
+          </aside>
+
+          <!-- START HERE -->
+
+          <div class="section-title">
+            <h2>Start here</h2>
+            <span>Most used</span>
+          </div>
+
+          <div class="resource-grid primary">
+
+            <a href="https://drive.google.com/file/d/1SRh4r72HB8lh1A9UdnCciocMyeyMTWmk/view?usp=drive_link"
+               class="resource-card dark"
+               target="_blank"
+               rel="noopener">
+
+              <div class="resource-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              </div>
+
+              <h3 class="resource-title">Video Grow Guide</h3>
+              <p class="resource-description">Step-by-step walkthrough</p>
+            </a>
+
+            <a href="https://qr1.be/WP4KB9"
+               class="resource-card neon"
+               target="_blank"
+               rel="noopener">
+
+              <div class="resource-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+                </svg>
+              </div>
+
+              <h3 class="resource-title">Kit Issue &amp; Replacement</h3>
+              <p class="resource-description">Report a problem with your kit</p>
+            </a>
+
+            <button class="resource-card" id="communityBtn" type="button">
+
+              <div class="resource-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"/>
+                </svg>
+              </div>
+
+              <h3 class="resource-title">Growing Community</h3>
+              <p class="resource-description">Connect with other growers</p>
+
+            </button>
+          </div>
+
+          <div class="community-note">
+            <div>
+              <strong>Join Our Growing Community</strong>
+              <span>For 24/7 Growing Support</span>
+            </div>
+            <button class="mini-pill" type="button" id="communityPill">
+              Join
+            </button>
+          </div>
+
+        </section>
+
+        <!-- RESOURCES -->
+
+        <section class="section" style="padding-top:0;">
+
+          <div class="section-title">
+            <h2>Resources</h2>
+            <span>Grow tools</span>
+          </div>
+
+          <div class="resource-grid">
+
+            <a href="quick-start.html" class="resource-card">
+              <div class="resource-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                </svg>
+              </div>
+              <h3 class="resource-title">Quick Start</h3>
+              <p class="resource-description">Get growing in 6 weeks</p>
+            </a>
+
+            <a href="https://qr1.be/WP4KB9"
+               class="resource-card"
+               target="_blank"
+               rel="noopener">
+
+              <div class="resource-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/>
+                </svg>
+              </div>
+
+              <h3 class="resource-title">Contact Us</h3>
+              <p class="resource-description">Get in touch with our team</p>
+            </a>
+
+            <a href="faq.html" class="resource-card">
+              <div class="resource-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="M11 18h2v-2h-2v2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5 0-2.21-1.79-4-4-4z"/>
+                </svg>
+              </div>
+
+              <h3 class="resource-title">FAQ's</h3>
+              <p class="resource-description">Find answers to common questions</p>
+            </a>
+
+            <a href="spore-partners.html" class="resource-card">
+              <div class="resource-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                </svg>
+              </div>
+
+              <h3 class="resource-title">Spore Partners</h3>
+              <p class="resource-description">Trusted spore vendors</p>
+            </a>
+
+            <a href="downloads.html"
+               class="resource-card dark"
+               style="grid-column:1/-1;">
+
+              <div class="resource-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+                </svg>
+              </div>
+
+              <h3 class="resource-title">Downloads</h3>
+              <p class="resource-description">Get guides and resources</p>
+            </a>
+
           </div>
         </section>
-      </div>
 
-      <div class="modal" id="communityModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="communityTitle">
-        <div class="modal-content">
-          <button class="close-modal" type="button" aria-label="Close community modal" onclick="closeModal()">&times;</button>
-          <h2 id="communityTitle">Join The Community</h2>
-          <p>Pick your platform and connect with other ShroomBloom growers</p>
-          <div class="community-options">
-            <a href="https://discord.gg/hxuCG6jF" class="community-btn" target="_blank" rel="noopener">Join Discord</a>
-          </div>
+        <!-- FOOTER -->
+
+        <footer class="footer">
+          Questions? Check the video guide or reach out to the community
+        </footer>
+
+        <div class="footer-logo-band">
+          <img
+            src="https://raw.githubusercontent.com/livekyn/shroombloom-logo/main/SB-Logo.png"
+            alt="ShroomBloom"
+          />
         </div>
+
+      </section>
+    </div>
+
+    <!-- COMMUNITY MODAL -->
+
+    <div class="modal"
+         id="communityModal"
+         aria-hidden="true"
+         role="dialog"
+         aria-modal="true"
+         aria-labelledby="communityTitle">
+
+      <div class="modal-content">
+
+        <button class="close-modal"
+                type="button"
+                aria-label="Close community modal"
+                onclick="closeModal()">
+          &times;
+        </button>
+
+        <h2 id="communityTitle">Join The Community</h2>
+
+        <p>Pick your platform and connect with other ShroomBloom growers</p>
+
+        <div class="community-options">
+          <a href="https://discord.gg/hxuCG6jF"
+             class="community-btn"
+             target="_blank"
+             rel="noopener">
+            Join Discord
+          </a>
+        </div>
+
       </div>
-    </main>
+    </div>
 
-    <script>
-      const communityBtn = document.getElementById('communityBtn');
-      const communityPill = document.getElementById('communityPill');
-      const communityModal = document.getElementById('communityModal');
+  </main>
 
-      function openModal() {
-        communityModal.classList.add('active');
-        communityModal.setAttribute('aria-hidden', 'false');
+  <script>
+    /* =========================================
+       VIP GROWER COUNTDOWN
+
+       48 HOURS ACTIVE
+       24 HOURS EXPIRED
+       AUTOMATIC REPEAT
+       ========================================= */
+
+    (async function initializeGrowOfferTimer() {
+
+      const ACTIVE_MS = 48 * 60 * 60 * 1000;
+      const CLOSED_MS = 24 * 60 * 60 * 1000;
+      const CYCLE_MS = ACTIVE_MS + CLOSED_MS;
+
+      // Optional fixed launch date.
+      // To prevent code updates from restarting the clock,
+      // set this once after the initial publication.
+      //
+      // Example: '2026-11-08T07:00:00Z'
+      const FIXED_LAUNCH_UTC = '';
+
+      // Fallback if GitHub's commit timestamp is unavailable.
+      const FALLBACK_LAUNCH_UTC = '2026-11-08T07:00:00Z';
+
+      const countdown = document.getElementById('offerCountdown');
+      const cta = document.getElementById('offerCTA');
+      const hourEl = document.getElementById('offerHours');
+      const minuteEl = document.getElementById('offerMinutes');
+      const secondEl = document.getElementById('offerSeconds');
+
+      const destination = 'https://nublumemushroom.com/';
+
+      let launch = Date.parse(
+        FIXED_LAUNCH_UTC || FALLBACK_LAUNCH_UTC
+      );
+
+      /*
+       * When hosted on GitHub Pages, use the most recent
+       * index.html commit as the starting timestamp.
+       *
+       * All visitors share the same timer.
+       */
+
+      if (!FIXED_LAUNCH_UTC) {
+        try {
+          const response = await fetch(
+            'https://api.github.com/repos/chrisale92/ShroomBloom/commits?path=index.html&per_page=1',
+            {
+              headers: {
+                Accept: 'application/vnd.github+json'
+              },
+              cache: 'no-store'
+            }
+          );
+
+          if (!response.ok) {
+            throw new Error('Commit date unavailable');
+          }
+
+          const commits = await response.json();
+
+          const found = Date.parse(
+            commits?.[0]?.commit?.committer?.date
+          );
+
+          if (!Number.isFinite(found)) {
+            throw new Error('Invalid commit date');
+          }
+
+          launch = found;
+
+        } catch (error) {
+
+          // Secondary fallback: page modification time.
+          try {
+            const response = await fetch(
+              window.location.pathname,
+              {
+                method: 'HEAD',
+                cache: 'no-store'
+              }
+            );
+
+            const found = Date.parse(
+              response.headers.get('Last-Modified')
+            );
+
+            if (Number.isFinite(found)) {
+              launch = found;
+            }
+
+          } catch (_) {
+            // Use the configured fallback launch date.
+          }
+        }
       }
 
-      function closeModal() {
-        communityModal.classList.remove('active');
-        communityModal.setAttribute('aria-hidden', 'true');
+      function draw() {
+
+        const elapsed = Math.max(
+          0,
+          Date.now() - launch
+        );
+
+        const phase = elapsed % CYCLE_MS;
+
+        const closed = phase >= ACTIVE_MS;
+
+        // Update visual states.
+        countdown.classList.toggle(
+          'is-expired',
+          closed
+        );
+
+        cta.classList.toggle(
+          'is-paused',
+          closed
+        );
+
+        /*
+         * If sale active:
+         * Show remaining time in the 48-hour window.
+         *
+         * If sale expired:
+         * Freeze timer at 00:00:00 for 24 hours.
+         */
+
+        const remaining = closed
+          ? 0
+          : Math.ceil((ACTIVE_MS - phase) / 1000);
+
+        const hours = Math.floor(
+          remaining / 3600
+        );
+
+        const minutes = Math.floor(
+          (remaining % 3600) / 60
+        );
+
+        const seconds = remaining % 60;
+
+        hourEl.textContent = String(hours).padStart(2, '0');
+        minuteEl.textContent = String(minutes).padStart(2, '0');
+        secondEl.textContent = String(seconds).padStart(2, '0');
+
+        if (closed) {
+
+          // Disable offer during closed state.
+          cta.removeAttribute('href');
+
+          cta.setAttribute(
+            'aria-disabled',
+            'true'
+          );
+
+          cta.tabIndex = -1;
+
+        } else {
+
+          // Restore offer at the start of next cycle.
+          cta.setAttribute(
+            'href',
+            destination
+          );
+
+          cta.removeAttribute('aria-disabled');
+
+          cta.tabIndex = 0;
+        }
       }
 
-      communityBtn.addEventListener('click', openModal);
-      communityPill.addEventListener('click', openModal);
+      draw();
 
-      communityModal.addEventListener('click', (event) => {
-        if (event.target === communityModal) {
-          closeModal();
-        }
-      });
+      // Update timer every second.
+      setInterval(draw, 1000);
 
-      document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape') {
-          closeModal();
-        }
-      });
-    </script>
-  </body>
+    })();
+
+    /* =========================================
+       COMMUNITY MODAL
+       ========================================= */
+
+    const communityBtn = document.getElementById('communityBtn');
+    const communityPill = document.getElementById('communityPill');
+    const communityModal = document.getElementById('communityModal');
+
+    function openModal() {
+      communityModal.classList.add('active');
+      communityModal.setAttribute('aria-hidden', 'false');
+    }
+
+    function closeModal() {
+      communityModal.classList.remove('active');
+      communityModal.setAttribute('aria-hidden', 'true');
+    }
+
+    communityBtn.addEventListener('click', openModal);
+    communityPill.addEventListener('click', openModal);
+
+    communityModal.addEventListener('click', (event) => {
+      if (event.target === communityModal) {
+        closeModal();
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        closeModal();
+      }
+    });
+  </script>
+
+</body>
 </html>
